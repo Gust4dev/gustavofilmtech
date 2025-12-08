@@ -9,8 +9,9 @@ import { Slide4_Turn } from './components/slides/Slide4_Turn';
 import { Slide5_Asset } from './components/slides/Slide5_Asset';
 import { Slide6_Gap } from './components/slides/Slide6_Gap';
 import { Slide7_CTA } from './components/slides/Slide7_CTA';
+import { Slide8_Final } from './components/slides/Slide8_Final';
 
-const SLIDES_COUNT = 7;
+const SLIDES_COUNT = 8;
 
 const App: React.FC = () => {
   const [showIntro, setShowIntro] = useState(true);
@@ -125,7 +126,8 @@ const App: React.FC = () => {
       case 3: return <Slide4_Turn key="slide4" />;
       case 4: return <Slide5_Asset key="slide5" />;
       case 5: return <Slide6_Gap key="slide6" />;
-      case 6: return <Slide7_CTA key="slide7" />;
+      case 6: return <Slide7_CTA key="slide7" onFinish={() => setCurrentSlide(7)} />;
+      case 7: return <Slide8_Final key="slide8" />;
       default: return null;
     }
   };

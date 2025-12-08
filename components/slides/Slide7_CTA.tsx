@@ -4,7 +4,11 @@ import { SmoothImage } from '../SmoothImage';
 import { ArrowRight } from 'lucide-react';
 import { motion } from 'framer-motion';
 
-export const Slide7_CTA: React.FC = () => {
+interface Slide7Props {
+  onFinish?: () => void;
+}
+
+export const Slide7_CTA: React.FC<Slide7Props> = ({ onFinish }) => {
   return (
     <SlideWrapper className="bg-white text-black">
       <div className="w-full h-full flex flex-col md:flex-row">
@@ -25,17 +29,19 @@ export const Slide7_CTA: React.FC = () => {
            </TextReveal>
 
            <TextReveal delay={0.6}>
-             <motion.a 
-                href="https://wa.me/" 
-                target="_blank"
-                rel="noopener noreferrer"
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
-                className="inline-flex items-center gap-3 bg-brand-black text-white px-8 py-5 text-lg font-bold rounded-none hover:bg-brand-red transition-colors duration-300 shadow-xl"
+             {/* Simple Red CTA Button */}
+             <motion.button 
+                onClick={onFinish}
+                initial={{ scale: 1 }}
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className="inline-flex items-center gap-3 bg-brand-red text-white px-10 py-5 text-xl font-bold rounded-none shadow-2xl transition-shadow hover:shadow-red-500/50"
              >
-               AVANÇAR PARA NEGOCIAÇÃO
-               <ArrowRight className="w-5 h-5" />
-             </motion.a>
+                INICIAR PARCERIA
+                <ArrowRight className="w-6 h-6" />
+             </motion.button>
+             
+           
            </TextReveal>
         </div>
 

@@ -14,13 +14,8 @@ export const Slide1_Cover: React.FC = () => {
           alt="Luxury Car" 
           className="w-full h-full object-cover opacity-60"
         />
-        {/* Dark Overlay for Readability - Smooth Fade In */}
-        <motion.div 
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 2.0, ease: "easeInOut" }}
-          className="absolute inset-0 bg-black/40" 
-        />
+        {/* Dark Overlay for Readability - Static */}
+        <div className="absolute inset-0 bg-black/40" />
         <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-black/80" />
       </div>
 
