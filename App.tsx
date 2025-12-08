@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { AnimatePresence } from 'framer-motion';
 import { Navigation } from './components/Navigation';
+import { IntroScreen } from './components/IntroScreen';
 import { Slide1_Cover } from './components/slides/Slide1_Cover';
 import { Slide2_Origin } from './components/slides/Slide2_Origin';
 import { Slide3_Struggle } from './components/slides/Slide3_Struggle';
@@ -12,12 +13,24 @@ import { Slide7_CTA } from './components/slides/Slide7_CTA';
 const SLIDES_COUNT = 7;
 
 const App: React.FC = () => {
+  const [showIntro, setShowIntro] = useState(true);
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isScrolling, setIsScrolling] = useState(false);
   const touchStartY = useRef(0);
 
+  const handleStart = useCallback(() => {
+    if (showIntro) {
+      setShowIntro(false);
+    }
+  }, [showIntro]);
+
   // Throttle slide changes to prevent rapid skipping
   const changeSlide = useCallback((direction: 'next' | 'prev') => {
+    if (showIntro) {
+      handleStart();
+      return;
+    }
+    
     if (isScrolling) return;
 
     setIsScrolling(true);
@@ -30,17 +43,22 @@ const App: React.FC = () => {
     });
 
     setTimeout(() => setIsScrolling(false), 1000); // 1s cool-down
-  }, [isScrolling]);
+  }, [isScrolling, showIntro, handleStart]);
 
   // Keyboard navigation
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
+      if (showIntro) {
+        handleStart();
+        return;
+      }
+
       if (e.key === 'ArrowDown' || e.key === 'ArrowRight') changeSlide('next');
       if (e.key === 'ArrowUp' || e.key === 'ArrowLeft') changeSlide('prev');
     };
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
-  }, [changeSlide]);
+  }, [changeSlide, showIntro, handleStart]);
 
   // Wheel navigation
   useEffect(() => {
@@ -48,6 +66,11 @@ const App: React.FC = () => {
       // Small threshold to ignore tiny movements (like trackpad momentum)
       if (Math.abs(e.deltaY) < 30) return;
       
+      if (showIntro) {
+        handleStart();
+        return;
+      }
+
       if (e.deltaY > 0) {
         changeSlide('next');
       } else {
@@ -56,12 +79,13 @@ const App: React.FC = () => {
     };
     window.addEventListener('wheel', handleWheel, { passive: true });
     return () => window.removeEventListener('wheel', handleWheel);
-  }, [changeSlide]);
+  }, [changeSlide, showIntro, handleStart]);
 
   // Touch navigation
   useEffect(() => {
     const handleTouchStart = (e: TouchEvent) => {
       touchStartY.current = e.touches[0].clientY;
+      // Note: We don't dismiss on touch start, only on swipe/scroll interpretation
     };
 
     const handleTouchEnd = (e: TouchEvent) => {
@@ -69,11 +93,19 @@ const App: React.FC = () => {
       const diff = touchStartY.current - touchEndY;
 
       if (Math.abs(diff) > 50) { // Threshold
+        if (showIntro) {
+          handleStart();
+          return;
+        }
+
         if (diff > 0) {
           changeSlide('next');
         } else {
           changeSlide('prev');
         }
+      } else if (showIntro) {
+        // If it was a tap (small diff) and intro is showing, allow dismissal
+         handleStart();
       }
     };
 
@@ -83,7 +115,7 @@ const App: React.FC = () => {
       window.removeEventListener('touchstart', handleTouchStart);
       window.removeEventListener('touchend', handleTouchEnd);
     };
-  }, [changeSlide]);
+  }, [changeSlide, showIntro, handleStart]);
 
   const renderSlide = () => {
     switch (currentSlide) {
@@ -101,28 +133,38 @@ const App: React.FC = () => {
   return (
     <div className="relative w-screen h-screen overflow-hidden bg-black font-sans selection:bg-brand-red selection:text-white">
       
-      <Navigation 
-        totalSlides={SLIDES_COUNT} 
-        currentSlide={currentSlide} 
-        onNavigate={(index) => {
-          if(!isScrolling) {
-            setCurrentSlide(index);
-          }
-        }} 
-      />
+      <AnimatePresence>
+        {showIntro && (
+          <IntroScreen onStart={handleStart} />
+        )}
+      </AnimatePresence>
+
+      {!showIntro && (
+        <Navigation 
+          totalSlides={SLIDES_COUNT} 
+          currentSlide={currentSlide} 
+          onNavigate={(index) => {
+            if(!isScrolling && !showIntro) {
+              setCurrentSlide(index);
+            }
+          }} 
+        />
+      )}
 
       {/* Main Slide Container */}
       <AnimatePresence mode="wait">
-        {renderSlide()}
+        {!showIntro && renderSlide()}
       </AnimatePresence>
 
       {/* Progress Bar */}
-      <div className="fixed bottom-0 left-0 w-full h-1 bg-white/10 z-50">
-        <div 
-          className="h-full bg-brand-red transition-all duration-700 ease-out"
-          style={{ width: `${((currentSlide + 1) / SLIDES_COUNT) * 100}%` }}
-        />
-      </div>
+      {!showIntro && (
+        <div className="fixed bottom-0 left-0 w-full h-1 bg-white/10 z-50">
+          <div 
+            className="h-full bg-brand-red transition-all duration-700 ease-out"
+            style={{ width: `${((currentSlide + 1) / SLIDES_COUNT) * 100}%` }}
+          />
+        </div>
+      )}
 
     </div>
   );

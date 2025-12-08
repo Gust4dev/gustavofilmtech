@@ -41,8 +41,8 @@ export const Slide5_Asset: React.FC = () => {
           ))}
         </div>
 
-        <div className="absolute top-0 right-0 opacity-5 pointer-events-none">
-           <span className="text-[20rem] font-display font-bold leading-none">ASSET</span>
+        <div className="absolute top-0 right-0 opacity-5 pointer-events-none h-full flex items-center">
+           <img src="/images/logoname.png" alt="Detail" className="h-[120%] object-contain ml-20" />
         </div>
       </div>
     </SlideWrapper>

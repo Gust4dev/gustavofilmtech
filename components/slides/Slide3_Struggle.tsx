@@ -1,7 +1,17 @@
 import React from 'react';
 import { SlideWrapper, TextReveal } from '../SlideWrapper';
+import { SmoothImage } from '../SmoothImage';
 
 export const Slide3_Struggle: React.FC = () => {
+  const [isGrayscale, setIsGrayscale] = React.useState(true);
+
+  React.useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsGrayscale(false);
+    }, 3000);
+    return () => clearTimeout(timer);
+  }, []);
+
   return (
     <SlideWrapper className="bg-zinc-900">
       <div className="absolute inset-0 opacity-10 pointer-events-none">
@@ -42,10 +52,10 @@ export const Slide3_Struggle: React.FC = () => {
           <TextReveal delay={0.4} className="h-full w-full">
             <div className="w-full h-full relative p-4 border border-white/10">
               <div className="absolute -top-4 -right-4 w-24 h-24 bg-brand-red/20 z-0" />
-              <img 
-                src="https://images.unsplash.com/photo-1517524008697-84bbe3c3fd98?q=80&w=2000" 
+              <SmoothImage 
+                src="/images/imagem3.jpeg" 
                 alt="Early Days Workshop" 
-                className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700 relative z-10 shadow-2xl"
+                className={`w-full h-full object-cover transition-all duration-1000 relative z-10 shadow-2xl ${isGrayscale ? 'grayscale' : 'grayscale-0'}`}
               />
             </div>
           </TextReveal>

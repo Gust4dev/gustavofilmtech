@@ -1,5 +1,6 @@
 import React from 'react';
 import { SlideWrapper, TextReveal } from '../SlideWrapper';
+import { SmoothImage } from '../SmoothImage';
 
 export const Slide4_Turn: React.FC = () => {
   return (
@@ -8,10 +9,11 @@ export const Slide4_Turn: React.FC = () => {
         
         {/* Top Image Split */}
         <div className="h-[45vh] w-full relative overflow-hidden">
-           <img 
-              src="https://images.unsplash.com/photo-1552519507-da3b142c6e3d?q=80&w=2000" 
+           <SmoothImage 
+              src="/images/imagem4.jpeg" 
               alt="Filmtech Success" 
-              className="w-full h-full object-cover object-center"
+              className="w-full h-full object-cover"
+              style={{ objectPosition: '50% 30%' }} // Ajuste a posição da imagem aqui (x% y%)
             />
             <div className="absolute inset-0 bg-gradient-to-t from-white to-transparent" />
         </div>
@@ -27,7 +29,10 @@ export const Slide4_Turn: React.FC = () => {
 
            <TextReveal delay={0.4}>
               <h2 className="text-4xl md:text-6xl font-black mb-8">
-                O NASCIMENTO DA <span className="text-brand-red">FILMTECH</span>
+                O NASCIMENTO DA <span className="text-brand-red inline-flex items-baseline">
+                  <img src="/images/logoF.png" alt="F" className="h-[0.8em] self-baseline mr-[0.05em]" />
+                  ILMTECH
+                </span>
               </h2>
            </TextReveal>
 

@@ -1,5 +1,5 @@
-import React from 'react';
 import { SlideWrapper, TextReveal } from '../SlideWrapper';
+import { SmoothImage } from '../SmoothImage';
 import { ChevronDown } from 'lucide-react';
 import { motion } from 'framer-motion';
 
@@ -8,8 +8,8 @@ export const Slide1_Cover: React.FC = () => {
     <SlideWrapper className="bg-black">
       {/* Background - Simulating Video Loop with High Res Image */}
       <div className="absolute inset-0 z-0 opacity-60">
-        <img 
-          src="https://images.unsplash.com/photo-1617788138017-80ad40651399?q=80&w=2070&auto=format&fit=crop" 
+        <SmoothImage 
+          src="/images/imagem1.JPG" 
           alt="Luxury Car" 
           className="w-full h-full object-cover"
         />
@@ -39,15 +39,7 @@ export const Slide1_Cover: React.FC = () => {
           </p>
         </TextReveal>
 
-        <motion.div 
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 1.5, duration: 1 }}
-          className="absolute bottom-10 left-1/2 transform -translate-x-1/2 flex flex-col items-center"
-        >
-          <span className="text-xs uppercase tracking-widest text-gray-400 mb-2">Role para começar</span>
-          <ChevronDown className="animate-bounce text-brand-red w-6 h-6" />
-        </motion.div>
+
       </div>
     </SlideWrapper>
   );

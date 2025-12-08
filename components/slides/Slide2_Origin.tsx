@@ -1,5 +1,6 @@
 import React from 'react';
 import { SlideWrapper, TextReveal } from '../SlideWrapper';
+import { SmoothImage } from '../SmoothImage';
 
 export const Slide2_Origin: React.FC = () => {
   return (
@@ -10,8 +11,8 @@ export const Slide2_Origin: React.FC = () => {
         <div className="w-full md:w-1/2 h-1/2 md:h-full relative overflow-hidden group">
           <div className="absolute inset-0 bg-brand-red/10 mix-blend-overlay z-10" />
           <div className="absolute inset-0 bg-black/40 z-10" />
-          <img 
-            src="https://images.unsplash.com/photo-1530026214736-613d9643e115?q=80&w=2000" 
+          <SmoothImage 
+            src="/images/imagem2.jpeg" 
             alt="Tomé-Açu 2011"
             className="w-full h-full object-cover transition-transform duration-[2s] scale-100 group-hover:scale-110"
           />

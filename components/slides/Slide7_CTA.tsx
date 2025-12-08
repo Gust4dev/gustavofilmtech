@@ -1,5 +1,6 @@
 import React from 'react';
 import { SlideWrapper, TextReveal } from '../SlideWrapper';
+import { SmoothImage } from '../SmoothImage';
 import { ArrowRight } from 'lucide-react';
 import { motion } from 'framer-motion';
 
@@ -40,8 +41,8 @@ export const Slide7_CTA: React.FC = () => {
 
         {/* Right Image */}
         <div className="w-full md:w-1/2 h-1/2 md:h-full relative order-1 md:order-2">
-          <img 
-            src="https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=2000" 
+          <SmoothImage 
+            src="/images/imagem5.jpeg" 
             alt="Founder Portrait" 
             className="w-full h-full object-cover grayscale"
           />
