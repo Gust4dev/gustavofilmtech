@@ -41,8 +41,19 @@ export const Slide5_Asset: React.FC = () => {
           ))}
         </div>
 
-        <div className="absolute top-0 right-0 opacity-5 pointer-events-none h-full flex items-center">
-           <img src="/images/logoname.png" alt="Detail" className="h-[120%] object-contain ml-20" />
+        <div className="absolute top-0 right-0 h-full flex items-center pointer-events-none overflow-hidden">
+           {/* Shadow Logo */}
+           <img 
+             src="/images/logoname.png" 
+             alt="" 
+             className="absolute right-[-40px] opacity-[0.02] blur-md scale-90 translate-x-8 translate-y-4 h-[100%] object-contain" 
+           />
+           {/* Main Logo */}
+           <img 
+             src="/images/logoname.png" 
+             alt="Detail" 
+             className="relative h-[90%] object-contain ml-20 opacity-5" 
+           />
         </div>
       </div>
     </SlideWrapper>

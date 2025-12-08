@@ -8,7 +8,7 @@ export const Slide3_Struggle: React.FC = () => {
   React.useEffect(() => {
     const timer = setTimeout(() => {
       setIsGrayscale(false);
-    }, 3000);
+    }, 1000);
     return () => clearTimeout(timer);
   }, []);
 
