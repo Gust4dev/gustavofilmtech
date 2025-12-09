@@ -1,194 +1,231 @@
 import React from 'react';
 import { SlideWrapper, TextReveal } from '../SlideWrapper';
 import { motion } from 'framer-motion';
-import { ArrowRight, Zap, Target, Shield, Users, Layers, TrendingUp } from 'lucide-react';
+import { ArrowRight, Zap, Target, Shield, Users, MonitorPlay, GraduationCap, DollarSign, Crown, Check } from 'lucide-react';
 
-// --- CONFIGURAÇÃO DA IMAGEM DO GUSTAVO ---
-const GUSTAVO_IMG_SCALE = 1.3; // Aumente para dar zoom (ex: 1.5)
-const GUSTAVO_IMG_X = '0px';   // Ajuste horizontal (ex: '10px' ou '-10px')
-const GUSTAVO_IMG_Y = '2px';   // Ajuste vertical (ex: '10px' para descer)
+const IMG_SETTINGS = {
+    gustavo: { scale: 1.3, x: 0, y: 3 },
+    rodrigo: { scale: 1.1, x: 0, y: 0 },
+    wallisson: { scale: 1.1, x: 0, y: 0 }
+};
 
 export const Slide9b_AcademyOperations: React.FC = () => {
   return (
     <SlideWrapper className="bg-white overflow-hidden">
       
-      {/* Background Tech Sutil */}
-      <div className="absolute inset-0 pointer-events-none opacity-40"
+      {/* Background Decorativo */}
+      <div className="absolute inset-0 pointer-events-none opacity-30"
            style={{ backgroundImage: 'radial-gradient(#e5e7eb 1px, transparent 1px)', backgroundSize: '30px 30px' }} 
       />
+      
+      {/* 1. LOGO FILMTECH EDUCATION (Mais destacada) */}
+      <div className="absolute top-8 right-8 w-[250px] md:w-[400px] opacity-40 pointer-events-none">
+         <img src="/images/logobranca.png" alt="FilmTech Education" />
+      </div>
 
-      <div className="w-full h-full flex flex-col justify-center px-4 md:px-12 relative z-10 py-8">
+      <div className="w-full h-full flex flex-col justify-center px-4 md:px-8 relative z-10 py-4">
         
-        {/* Header */}
-        <div className="text-center mb-12">
+        {/* === HEADER === */}
+        <div className="text-center mb-8">
             <TextReveal>
-                <div className="inline-block px-4 py-1 bg-gray-100 rounded-full mb-4">
-                    <span className="text-gray-500 font-bold uppercase tracking-[0.2em] text-[10px]">
-                        Workflow Integrado
-                    </span>
-                </div>
-            </TextReveal>
-            <TextReveal delay={0.1}>
-                <h2 className="text-3xl md:text-5xl font-black text-gray-900 uppercase tracking-tight leading-none">
+                <h2 className="text-3xl md:text-4xl font-black text-gray-900 uppercase tracking-tight leading-none mb-2">
                     A Operação na <span className="text-emerald-600">Prática</span>
                 </h2>
+                <p className="text-gray-400 text-xs font-bold tracking-[0.2em] uppercase">
+                    Fluxo de Trabalho & Fontes de Receita
+                </p>
             </TextReveal>
         </div>
 
-        {/* === O FLUXOGRAMA === */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-11 relative max-w-7xl mx-auto w-full items-stretch">
-            
-            {/* Setas de Conexão (Desktop) */}
-            <div className="absolute inset-0 pointer-events-none hidden md:block z-20">
-                <ArrowRight className="absolute top-1/2 left-[31.5%] text-gray-300 w-8 h-8 -translate-y-1/2" />
-                <ArrowRight className="absolute top-1/2 right-[31.5%] text-gray-300 w-8 h-8 -translate-y-1/2" />
+        {/* === PARTE 1: QUEM FAZ (WORKFLOW) === */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-14 relative max-w-6xl mx-auto w-full items-stretch mb-8">
+            {/* Setas (Desktop) */}
+            <div className="absolute top-1/2 left-0 w-full pointer-events-none hidden md:block z-0 -translate-y-1/2 mt-2">
+                <ArrowRight className="absolute left-[31%] text-gray-400 w-8 h-8" />
+                <ArrowRight className="absolute right-[31%] text-gray-400 w-8 h-8" />
             </div>
 
-            {/* CARD 1: GUSTAVO (O CRIADOR) */}
+            {/* 1. GUSTAVO */}
             <OperationCard 
                 title="Gustavo"
                 role="Atração & Autoridade"
-                image="/images/gustavo.png" // SUA FOTO AQUI
-                imageStyle={{
-                    transform: `scale(${GUSTAVO_IMG_SCALE}) translate(${GUSTAVO_IMG_X}, ${GUSTAVO_IMG_Y})`,
-                    transformOrigin: 'center center'
-                }}
-                color="red"
-                delay={0.2}
+                image="/images/gustavo.png"
+                imgSettings={IMG_SETTINGS.gustavo}
+                color="amber"
                 icon={Zap}
-                items={[
-                    "Gera atração e desejo",
-                    "Faz a oferta irresistível",
-                    "Entrega o método (Aulas)",
-                    "Mantém a autoridade alta"
-                ]}
+                delay={0.1}
+                items={["Gera desejo e oferta", "Entrega as aulas", "Mantém o Hype"]}
             />
 
-            {/* CARD 2: UNI AUTO (A MÁQUINA) - Destaque */}
+            {/* 2. UNI AUTO */}
             <OperationCard 
                 title="Uni Auto"
                 role="Máquina de Vendas"
-                image="/images/Rodrigo.jpeg" // FOTO DO RODRIGO AQUI (OU LOGO UNI AUTO SE TIVER)
+                image="/images/Rodrigo.jpeg" 
+                imgSettings={IMG_SETTINGS.rodrigo}
                 color="emerald"
-                delay={0.4}
-                isCenter
                 icon={Users}
-                items={[
-                    "Atende os alunos (SDR)",
-                    "Fecha as vendas (Closer)",
-                    "Organiza as turmas",
-                    "Controle financeiro diário"
-                ]}
+                delay={0.2}
+                isCenter
+                items={["350 Vendedores", "Follow-up diário", "Gestão de Leads"]}
             />
 
-            {/* CARD 3: GESTÃO (A BASE) */}
+            {/* 3. GESTÃO */}
             <OperationCard 
-                title="Rodrigo & Wallisson"
-                role="Inteligência & Gestão"
-                image="/images/Wallisson.jpg" // FOTO DO WALLISSON
+                title="Gestão"
+                role="Rodrigo & Wallisson"
+                image="/images/Wallisson.jpg"
+                imgSettings={IMG_SETTINGS.wallisson}
                 color="slate"
-                delay={0.6}
                 icon={Shield}
-                items={[
-                    "Gestão de caixa estratégico",
-                    "Metas e indicadores (KPIs)",
-                    "Treinamento do time",
-                    "Disciplina operacional"
-                ]}
+                delay={0.3}
+                items={["Controle de Caixa", "Metas e KPIs", "Escala do Time"]}
             />
-
         </div>
 
-        {/* === A EQUAÇÃO FINAL === */}
-        <TextReveal delay={0.8} className="mt-16">
-            <div className="flex flex-col md:flex-row items-center justify-center gap-4 md:gap-8">
-                <div className="flex flex-col md:flex-row items-center justify-center gap-4 md:gap-6">
-                    {/* Item 1: Autoridade */}
-                    <div className="bg-white border border-gray-100 shadow-lg hover:shadow-xl rounded-2xl px-8 py-4 flex items-center gap-4 hover:-translate-y-1 transition-all duration-300">
-                        <div className="p-2.5 bg-red-50 rounded-xl"><Zap className="w-5 h-5 text-red-600" /></div>
-                        <span className="font-bold text-gray-900 text-lg">Autoridade</span>
+        {/* === PARTE 2: O QUE VENDE (PRODUTOS) === */}
+        <div className="max-w-6xl mx-auto w-full">
+            <TextReveal delay={0.4}>
+                <div className="flex items-center gap-3 mb-4 pl-1">
+                    <div className="p-1.5 bg-emerald-100 rounded-lg">
+                        <DollarSign className="w-4 h-4 text-emerald-700" />
                     </div>
-
-                    <span className="text-gray-300 font-light text-3xl hidden md:block">+</span>
-
-                    {/* Item 2: Comercial */}
-                    <div className="bg-white border border-gray-100 shadow-lg hover:shadow-xl rounded-2xl px-8 py-4 flex items-center gap-4 hover:-translate-y-1 transition-all duration-300">
-                        <div className="p-2.5 bg-emerald-50 rounded-xl"><TrendingUp className="w-5 h-5 text-emerald-600" /></div>
-                        <span className="font-bold text-gray-900 text-lg">Comercial</span>
-                    </div>
-
-                    <span className="text-gray-300 font-light text-3xl hidden md:block">+</span>
-
-                    {/* Item 3: Gestão */}
-                    <div className="bg-white border border-gray-100 shadow-lg hover:shadow-xl rounded-2xl px-8 py-4 flex items-center gap-4 hover:-translate-y-1 transition-all duration-300">
-                        <div className="p-2.5 bg-slate-50 rounded-xl"><Layers className="w-5 h-5 text-slate-600" /></div>
-                        <span className="font-bold text-gray-900 text-lg">Gestão</span>
-                    </div>
+                    <h3 className="text-sm font-bold text-gray-900 uppercase tracking-widest">
+                        Mix de Produtos (Receita)
+                    </h3>
                 </div>
+            </TextReveal>
+
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                
+                {/* PRODUTO 1: PRESENCIAL */}
+                <ProductCard 
+                    title="Presencial (Imersão)"
+                    revenue="R$ 240k/mês"
+                    icon={Users}
+                    color="text-gray-900"
+                    bg="bg-gray-50"
+                    delay={0.5}
+                    features={[
+                        "Ticket Médio: R$ 10.000",
+                        "Turmas de 10-12 alunos",
+                        "2 Turmas mensais (Demanda Real)"
+                    ]}
+                />
+
+                {/* PRODUTO 2: ONLINE (HERO) */}
+                <ProductCard 
+                    title="Digital (Online)"
+                    revenue="R$ 600k/mês"
+                    icon={MonitorPlay}
+                    color="text-emerald-700"
+                    bg="bg-emerald-50"
+                    border="border-emerald-200"
+                    delay={0.6}
+                    highlight
+                    features={[
+                        "Ticket: R$ 997,00",
+                        "Escala Ilimitada",
+                        "Meta: 300 a 600 vendas/mês"
+                    ]}
+                />
+
+                {/* PRODUTO 3: MENTORIA (O QUE FALTAVA) */}
+                <ProductCard 
+                    title="Mentorias & Upsell"
+                    revenue="R$ 120k/mês"
+                    icon={Crown}
+                    color="text-amber-700"
+                    bg="bg-amber-50"
+                    border="border-amber-100"
+                    delay={0.7}
+                    features={[
+                        "Mentoria Individual",
+                        "Mentoria 6 Meses",
+                        "Aplicador de Elite",
+                        "Upgrade de Curso"
+                    ]}
+                />
+
             </div>
-        </TextReveal>
+        </div>
 
       </div>
     </SlideWrapper>
   );
 };
 
-// --- CARD COM FOTO (CUSTOMIZADO) ---
-const OperationCard = ({ title, role, image, imageStyle, color, delay, items, isCenter, icon: Icon }: any) => {
-    
-    // Configuração de Temas
-    const themes: any = {
-        red: { border: 'border-red-100', text: 'text-red-700', bg: 'bg-red-50', ring: 'ring-red-100' },
-        emerald: { border: 'border-emerald-200', text: 'text-emerald-700', bg: 'bg-emerald-50', ring: 'ring-emerald-200' },
-        slate: { border: 'border-slate-200', text: 'text-slate-700', bg: 'bg-slate-50', ring: 'ring-slate-200' },
+// --- COMPONENTES VISUAIS ---
+
+const OperationCard = ({ title, role, image, imgSettings, color, items, isCenter, icon: Icon, delay }: any) => {
+    const colors: any = {
+        amber: { border: 'border-amber-200', text: 'text-amber-700', ring: 'ring-amber-100' },
+        emerald: { border: 'border-emerald-200', text: 'text-emerald-700', ring: 'ring-emerald-100' },
+        slate: { border: 'border-slate-200', text: 'text-slate-700', ring: 'ring-slate-200' },
     };
-    const theme = themes[color];
+    const theme = colors[color];
 
     return (
         <motion.div
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay }}
-            className={`
-                relative flex flex-col h-full bg-white 
-                rounded-2xl border ${theme.border} p-6 
-                ${isCenter ? `shadow-2xl scale-105 z-10 ring-4 ${theme.ring}` : 'shadow-lg hover:shadow-xl'}
-                transition-all duration-300
-            `}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay }}
+            className={`bg-white border ${theme.border} rounded-xl p-5 flex flex-col gap-5 ${isCenter ? 'shadow-xl ring-2 ' + theme.ring : 'shadow-sm'}`}
         >
-            {/* Header com Foto */}
-            <div className="flex items-center gap-4 mb-6 pb-6 border-b border-gray-50">
-                <div className="relative">
-                    <div className={`w-16 h-16 rounded-full overflow-hidden border-2 ${theme.border}`}>
-                        <img 
-                            src={image} 
-                            alt={title} 
-                            className="w-full h-full object-cover" 
-                            style={imageStyle}
-                        />
-                    </div>
-                    {/* Badge Icon */}
-                    <div className={`absolute -bottom-1 -right-1 p-1.5 rounded-full bg-white shadow-sm border border-gray-100`}>
-                        <Icon className={`w-3 h-3 ${theme.text}`} />
-                    </div>
+            <div className="flex items-center gap-4">
+                <div className="w-12 h-12 rounded-full overflow-hidden border border-gray-100 relative shrink-0">
+                    <img 
+                        src={image} 
+                        className="w-full h-full object-cover" 
+                        style={{ transform: `scale(${imgSettings.scale}) translate(${imgSettings.x}px, ${imgSettings.y}px)` }}
+                    />
                 </div>
                 <div>
-                    <h3 className="text-xl font-bold text-gray-900 leading-tight">{title}</h3>
-                    <p className={`text-xs font-bold uppercase tracking-wider mt-1 ${theme.text}`}>{role}</p>
+                    <h4 className="font-bold text-gray-900 text-lg leading-tight">{title}</h4>
+                    <p className={`text-[11px] font-bold uppercase tracking-wider ${theme.text}`}>{role}</p>
                 </div>
+                <div className="ml-auto text-gray-300"><Icon size={22} /></div>
             </div>
-
-            {/* Lista de Atribuições */}
-            <ul className="space-y-4 flex-1">
-                {items.map((item: string, i: number) => (
-                    <li key={i} className="flex items-start gap-3 group">
-                        <div className={`mt-1.5 w-1.5 h-1.5 rounded-full shrink-0 transition-all group-hover:scale-150 ${theme.bg.replace('bg-', 'bg-')}`} style={{backgroundColor: 'currentColor'}} />
-                        <span className="text-sm text-gray-600 font-medium leading-relaxed group-hover:text-gray-900 transition-colors">
-                            {item}
-                        </span>
+            <ul className="space-y-2">
+                {items.map((it: string, i: number) => (
+                    <li key={i} className="flex items-start gap-12 text-[13px] text-gray-600 font-medium leading-snug">
+                        <div className={`w-1.5 h-1.5 rounded-full mt-1.5 shrink-0 bg-gray-400`} />
+                        {it}
                     </li>
                 ))}
             </ul>
         </motion.div>
-    );
-};
+    )
+}
+
+const ProductCard = ({ title, revenue, icon: Icon, color, bg, border = 'border-transparent', delay, features, highlight }: any) => (
+    <motion.div
+        initial={{ opacity: 0, scale: 0.95 }}
+        whileInView={{ opacity: 1, scale: 1 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.5, delay }}
+        className={`rounded-xl p-6 border ${border} ${bg} flex flex-col h-full relative overflow-hidden ${highlight ? 'shadow-md' : ''}`}
+    >
+        {highlight && <div className="absolute top-0 right-0 bg-emerald-600 text-white text-[10px] font-bold px-3 py-1 rounded-bl-lg">FOCO</div>}
+        
+        <div className="flex items-center gap-4 mb-5">
+            <div className={`p-2.5 rounded-lg bg-white/60 ${color}`}>
+                <Icon size={22} />
+            </div>
+            <div>
+                <h4 className={`font-bold text-base ${color}`}>{title}</h4>
+                <p className="text-sm font-black text-gray-900">{revenue}</p>
+            </div>
+        </div>
+        
+        <ul className="space-y-3 mt-auto">
+            {features.map((feat: string, i: number) => (
+                <li key={i} className="flex items-center gap-2 text-[13px] text-gray-600 font-medium">
+                    <Check size={14} className={highlight ? "text-emerald-600" : "text-gray-400"} />
+                    {feat}
+                </li>
+            ))}
+        </ul>
+    </motion.div>
+);

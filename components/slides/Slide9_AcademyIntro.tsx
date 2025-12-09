@@ -1,7 +1,7 @@
 import React from 'react';
 import { SlideWrapper, TextReveal } from '../SlideWrapper';
 import { motion } from 'framer-motion';
-import { GraduationCap, Users, TrendingUp, CheckCircle2, AlertCircle } from 'lucide-react';
+import { GraduationCap, TrendingUp, CheckCircle2, AlertCircle } from 'lucide-react';
 
 export const Slide9_AcademyIntro: React.FC = () => {
   return (
@@ -81,8 +81,14 @@ export const Slide9_AcademyIntro: React.FC = () => {
                         <div className="absolute inset-0 bg-gradient-to-r from-emerald-900 to-gray-900 opacity-50" />
                         <div className="relative z-10">
                             <span className="text-emerald-400 font-mono text-[10px] uppercase tracking-widest block mb-1">A Nova Estrutura</span>
-                            <h3 className="text-2xl font-bold text-white flex items-center gap-2">
-                                <Users className="w-6 h-6 text-emerald-400" />
+                            <h3 className="text-2xl font-bold text-white flex items-center gap-3">
+                                <div className="bg-white rounded px-3 py-1.5 h-12 flex items-center justify-center shadow-sm">
+                                    <img 
+                                        src="/images/logouniauto.png" 
+                                        alt="Uni Auto" 
+                                        className="h-full w-auto object-contain" 
+                                    />
+                                </div>
                                 Uni Auto
                             </h3>
                         </div>
@@ -96,7 +102,6 @@ export const Slide9_AcademyIntro: React.FC = () => {
                         <p className="text-sm font-medium text-gray-500 uppercase tracking-widest mb-4">O Time de Elite que Escala</p>
                         
                         <ul className="space-y-4">
-                            <ListItem title="350 Vendedores Treinados" sub="Força comercial massiva pronta para atuar." />
                             <ListItem title="Atendimento Imediato" sub="Zero leads perdidos por demora." />
                             <ListItem title="Gestão & Previsibilidade" sub="Metas claras e fechamento diário." />
                             <ListItem title="100% da Demanda Convertida" sub="Transformando autoridade em caixa." highlight />
