@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { SlideWrapper } from '../SlideWrapper';
-import { SmoothImage } from '../SmoothImage';
+// import { SmoothImage } from '../SmoothImage'; // Removed to optimize perfromance
 import { motion, AnimatePresence, LayoutGroup, useSpring, useTransform } from 'framer-motion';
 import { Users, Target, TrendingUp, Zap, Award, Layers } from 'lucide-react';
 
@@ -10,10 +10,10 @@ const TEAM_DATA = [
     id: 'gustavo',
     name: 'Gustavo',
     role: 'Atração & Autoridade',
-    image: '/images/gustavo.jpeg',
+    image: '/images/gustavo.png',
     color: 'red',
     // Ajustei o scale para não ficar excessivo com o novo tamanho base
-    imageSettings: { scale: 1.3, x: 0, y: -5 }, 
+    imageSettings: { scale: 1, x: 0, y: -5 }, 
     nodes: [
       { title: 'Marketing & Branding', items: ['Tráfego e Atração', 'Posicionamento Premium'], icon: Zap },
       { title: 'Filmtech Operação', items: ['Serviço de Alto Padrão', 'PPF / Customização'], icon: Layers },
@@ -79,7 +79,21 @@ const cardVariants = {
 
 export const Slide7_TeamStructure: React.FC = () => {
     const [activeIds, setActiveIds] = useState<string[]>([]);
+    const [imagesLoadedCount, setImagesLoadedCount] = useState(0);
+    const [isReady, setIsReady] = useState(false);
     const isAnyOpen = activeIds.length > 0;
+
+    // Monitorar quando todas as imagens carregaram
+    useEffect(() => {
+        if (imagesLoadedCount >= TEAM_DATA.length) {
+            // Pequeno delay safe para garantir o paint
+            setTimeout(() => setIsReady(true), 500);
+        }
+    }, [imagesLoadedCount]);
+
+    const handleImageLoad = () => {
+        setImagesLoadedCount(prev => prev + 1);
+    };
 
     const toggleId = (id: string) => {
         setActiveIds(prev => prev.includes(id) ? prev.filter(i => i !== id) : [...prev, id]);
@@ -87,11 +101,29 @@ export const Slide7_TeamStructure: React.FC = () => {
 
     return (
         <SlideWrapper className="bg-white overflow-hidden">
+            {/* Overlay de Carregamento Silencioso */}
+            <AnimatePresence>
+                {!isReady && (
+                    <motion.div 
+                        initial={{ opacity: 1 }}
+                        exit={{ opacity: 0 }}
+                        transition={{ duration: 1.5, ease: "easeInOut" }} // Fade mais lento
+                        className="absolute inset-0 z-50 bg-white pointer-events-none flex items-center justify-center"
+                    />
+                )}
+            </AnimatePresence>
+
             {/* Background fixo */}
-            <div className="absolute inset-0 pointer-events-none">
-                 <div className="absolute top-0 right-0 w-[50vh] h-[50vh] bg-gray-100 rounded-full blur-[120px] opacity-60" />
-                 <div className="absolute bottom-0 left-0 w-[60vh] h-[60vh] bg-brand-red/5 rounded-full blur-[100px]" />
-            </div>
+            {/* Background fixo - Otimizado com Gradients (livre de BLUR custoso) */}
+            <div 
+                className="absolute inset-0 pointer-events-none"
+                style={{
+                    background: `
+                        radial-gradient(circle at 100% 0%, rgba(243, 244, 246, 0.8) 0%, transparent 50%),
+                        radial-gradient(circle at 0% 100%, rgba(220, 38, 38, 0.03) 0%, transparent 50%)
+                    `
+                }}
+            />
 
             {/* CONTAINER PRINCIPAL */}
             {/* Removi o stopPropagation daqui. Clicar no fundo = Próximo Slide (comportamento padrão) */}
@@ -121,6 +153,7 @@ export const Slide7_TeamStructure: React.FC = () => {
                                 isOpen={activeIds.includes(leader.id)}
                                 isAnyOpen={isAnyOpen}
                                 onToggle={() => toggleId(leader.id)}
+                                onImageLoad={handleImageLoad}
                             />
                         ))}
                     </div>
@@ -132,7 +165,7 @@ export const Slide7_TeamStructure: React.FC = () => {
 };
 
 // --- COLUNA INDIVIDUAL ---
-const Column = ({ leader, isOpen, isAnyOpen, onToggle }: any) => {
+const Column = ({ leader, isOpen, isAnyOpen, onToggle, onImageLoad }: any) => {
     const isRed = leader.color === 'red';
     const isBlue = leader.color === 'blue';
     
@@ -169,10 +202,13 @@ const Column = ({ leader, isOpen, isAnyOpen, onToggle }: any) => {
                         ${isOpen ? 'shadow-2xl ring-4 ring-offset-4 ' + colors.line : ''}
                     `}
                 >
-                     <SmoothImage 
+                     <img 
                         src={leader.image} 
                         alt={leader.name} 
+                        onLoad={onImageLoad}
                         className="w-full h-full object-cover rounded-full"
+                        loading="eager"
+                        decoding="async"
                         style={{
                             transform: `scale(${leader.imageSettings?.scale || 1}) translate(${leader.imageSettings?.x || 0}px, ${leader.imageSettings?.y || 0}px)`
                         }}
