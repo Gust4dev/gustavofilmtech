@@ -34,7 +34,7 @@ export const Slide2_Origin: React.FC = () => {
 
           <TextReveal delay={0.4}>
             <p className="text-gray-400 text-lg md:text-xl leading-relaxed mb-8 border-l-2 border-brand-red/30 pl-6">
-              "Tomé-Açu, Pará. Foi aqui que aprendi com o 'Cafa' a lição que guia a empresa até hoje: <strong className="text-white">O trabalho bem feito abre portas que o dinheiro não abre.</strong>"
+              "Tomé-Açu, Pará. Foi aqui que aprendi com o 'Cara' a lição que guia a empresa até hoje: <strong className="text-white">O trabalho bem feito abre portas que o dinheiro não abre.</strong>"
             </p>
           </TextReveal>
 

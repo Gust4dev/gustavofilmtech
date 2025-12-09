@@ -8,14 +8,13 @@ import { Slide3_Struggle } from './components/slides/Slide3_Struggle';
 import { Slide4_Turn } from './components/slides/Slide4_Turn';
 import { Slide5_Asset } from './components/slides/Slide5_Asset';
 import { Slide6_Gap } from './components/slides/Slide6_Gap';
-import { Slide7_Partners } from './components/slides/Slide7_Partners';
-import { Slide8_Model } from './components/slides/Slide8_Model';
+import { Slide7_TeamStructure } from './components/slides/Slide7_TeamStructure';
 import { Slide9_SalesMachine } from './components/slides/Slide9_SalesMachine';
 import { Slide10_Financials } from './components/slides/Slide10_Financials';
 import { Slide11_Deal } from './components/slides/Slide11_Deal';
 import { Slide12_Final } from './components/slides/Slide12_Final';
 
-const SLIDES_COUNT = 12;
+const SLIDES_COUNT = 11;
 
 const App: React.FC = () => {
   const [showIntro, setShowIntro] = useState(true);
@@ -122,6 +121,24 @@ const App: React.FC = () => {
     };
   }, [changeSlide, showIntro, handleStart]);
 
+  // Click navigation (Tap to next, excluding interactive elements)
+  const handleClick = useCallback((e: React.MouseEvent | MouseEvent) => {
+    if (showIntro) return;
+
+    // Check if target or parents are interactive
+    const target = e.target as HTMLElement;
+    const isInteractive = target.closest('button, a, input, textarea, select, [role="button"], [data-no-auto-nav]');
+
+    if (isInteractive) return;
+
+    changeSlide('next');
+  }, [changeSlide, showIntro]);
+
+  useEffect(() => {
+    window.addEventListener('click', handleClick);
+    return () => window.removeEventListener('click', handleClick);
+  }, [handleClick]);
+
   const renderSlide = () => {
     switch (currentSlide) {
       case 0: return <Slide1_Cover key="slide1" />;
@@ -130,12 +147,11 @@ const App: React.FC = () => {
       case 3: return <Slide4_Turn key="slide4" />;
       case 4: return <Slide5_Asset key="slide5" />;
       case 5: return <Slide6_Gap key="slide6" />;
-      case 6: return <Slide7_Partners key="slide7" />;
-      case 7: return <Slide8_Model key="slide8" />;
-      case 8: return <Slide9_SalesMachine key="slide9" />;
-      case 9: return <Slide10_Financials key="slide10" />;
-      case 10: return <Slide11_Deal key="slide11" />;
-      case 11: return <Slide12_Final key="slide12" />;
+      case 6: return <Slide7_TeamStructure key="slide7" />;
+      case 7: return <Slide9_SalesMachine key="slide9" />;
+      case 8: return <Slide10_Financials key="slide10" />;
+      case 9: return <Slide11_Deal key="slide11" />;
+      case 10: return <Slide12_Final key="slide12" />;
       default: return null;
     }
   };
