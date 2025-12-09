@@ -8,10 +8,14 @@ import { Slide3_Struggle } from './components/slides/Slide3_Struggle';
 import { Slide4_Turn } from './components/slides/Slide4_Turn';
 import { Slide5_Asset } from './components/slides/Slide5_Asset';
 import { Slide6_Gap } from './components/slides/Slide6_Gap';
-import { Slide7_CTA } from './components/slides/Slide7_CTA';
-import { Slide8_Final } from './components/slides/Slide8_Final';
+import { Slide7_Partners } from './components/slides/Slide7_Partners';
+import { Slide8_Model } from './components/slides/Slide8_Model';
+import { Slide9_SalesMachine } from './components/slides/Slide9_SalesMachine';
+import { Slide10_Financials } from './components/slides/Slide10_Financials';
+import { Slide11_Deal } from './components/slides/Slide11_Deal';
+import { Slide12_Final } from './components/slides/Slide12_Final';
 
-const SLIDES_COUNT = 8;
+const SLIDES_COUNT = 12;
 
 const App: React.FC = () => {
   const [showIntro, setShowIntro] = useState(true);
@@ -126,14 +130,18 @@ const App: React.FC = () => {
       case 3: return <Slide4_Turn key="slide4" />;
       case 4: return <Slide5_Asset key="slide5" />;
       case 5: return <Slide6_Gap key="slide6" />;
-      case 6: return <Slide7_CTA key="slide7" onFinish={() => setCurrentSlide(7)} />;
-      case 7: return <Slide8_Final key="slide8" />;
+      case 6: return <Slide7_Partners key="slide7" />;
+      case 7: return <Slide8_Model key="slide8" />;
+      case 8: return <Slide9_SalesMachine key="slide9" />;
+      case 9: return <Slide10_Financials key="slide10" />;
+      case 10: return <Slide11_Deal key="slide11" />;
+      case 11: return <Slide12_Final key="slide12" />;
       default: return null;
     }
   };
 
   return (
-    <div className="relative w-screen h-screen overflow-hidden bg-black font-sans selection:bg-brand-red selection:text-white">
+    <div className="relative w-screen h-screen overflow-hidden bg-white font-sans selection:bg-brand-red selection:text-white">
       
       <AnimatePresence>
         {showIntro && (

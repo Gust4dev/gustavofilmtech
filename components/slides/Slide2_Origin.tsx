@@ -17,7 +17,7 @@ export const Slide2_Origin: React.FC = () => {
             className="w-full h-full object-cover transition-transform duration-[2s] scale-100 group-hover:scale-110"
           />
           <div className="absolute bottom-6 left-6 z-20">
-            <span className="text-8xl font-display font-bold text-white/10 select-none">2009</span>
+            <span className="text-8xl font-display font-bold text-white/10 select-none">2011</span>
           </div>
         </div>
 

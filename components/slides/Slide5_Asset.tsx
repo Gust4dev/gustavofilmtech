@@ -1,4 +1,5 @@
 import React from 'react';
+import { motion } from 'framer-motion';
 import { SlideWrapper, TextReveal } from '../SlideWrapper';
 import { CheckCircle2 } from 'lucide-react';
 
@@ -43,16 +44,22 @@ export const Slide5_Asset: React.FC = () => {
 
         <div className="absolute top-0 right-0 h-full flex items-center pointer-events-none overflow-hidden">
            {/* Shadow Logo */}
-           <img 
+           <motion.img 
+             initial={{ opacity: 0, x: 100 }}
+             animate={{ opacity: 0.02, x: 32 }}
+             transition={{ duration: 1.5, ease: "easeOut" }}
              src="/images/logoname.png" 
              alt="" 
-             className="absolute right-[-40px] opacity-[0.02] blur-md scale-90 translate-x-8 translate-y-4 h-[100%] object-contain" 
+             className="absolute right-[-40px] blur-md scale-90 translate-y-4 h-[100%] object-contain" 
            />
            {/* Main Logo */}
-           <img 
+           <motion.img 
+             initial={{ opacity: 0, x: 100 }}
+             animate={{ opacity: 0.05, x: 0 }}
+             transition={{ duration: 1.5, ease: "easeOut", delay: 0.2 }}
              src="/images/logoname.png" 
              alt="Detail" 
-             className="relative h-[90%] object-contain ml-20 opacity-5" 
+             className="relative h-[90%] object-contain ml-20" 
            />
         </div>
       </div>

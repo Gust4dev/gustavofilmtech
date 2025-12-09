@@ -31,6 +31,7 @@ export const TextReveal: React.FC<{ children: ReactNode; delay?: number; classNa
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6, delay: delay + 0.3, ease: "easeOut" }}
       className={className}
+      style={{ willChange: 'transform, opacity', backfaceVisibility: 'hidden' }}
     >
       {children}
     </motion.div>
