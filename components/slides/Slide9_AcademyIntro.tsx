@@ -37,7 +37,7 @@ export const Slide9_AcademyIntro: React.FC = () => {
                         </span>
                     </h2>
                     <p className="text-gray-500 text-sm md:text-base leading-relaxed max-w-md">
-                        "Ninguém tem a narrativa e o posicionamento que o Gustavo tem. O marketing é extremamente forte."
+                       Ninguém possui a narrativa e o posicionamento que construímos aqui. Uma abordagem de marketing extremamente forte e sem concorrência direta
                     </p>
                 </TextReveal>
 

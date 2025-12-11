@@ -10,12 +10,13 @@ import { Slide5_Asset } from './components/slides/Slide5_Asset';
 import { Slide6_Gap } from './components/slides/Slide6_Gap';
 import { Slide7_TeamStructure } from './components/slides/Slide7_TeamStructure';
 import { Slide9_AcademyIntro } from './components/slides/Slide9_AcademyIntro';
+import { Slide9a_Students } from './components/slides/Slide9a_Students';
 import { Slide9b_AcademyOperations } from './components/slides/Slide9b_AcademyOperations';
 import { Slide10_Financials } from './components/slides/Slide10_Financials';
 import { Slide11_Deal } from './components/slides/Slide11_Deal';
 import { Slide12_Final } from './components/slides/Slide12_Final';
 
-const SLIDES_COUNT = 12;
+const SLIDES_COUNT = 13;
 
 const App: React.FC = () => {
   const [showIntro, setShowIntro] = useState(true);
@@ -150,10 +151,11 @@ const App: React.FC = () => {
       case 5: return <Slide6_Gap key="slide6" />;
       case 6: return <Slide7_TeamStructure key="slide7" />;
       case 7: return <Slide9_AcademyIntro key="slide9a" />;
-      case 8: return <Slide9b_AcademyOperations key="slide9b" />;
-      case 9: return <Slide10_Financials key="slide10" />;
-      case 10: return <Slide11_Deal key="slide11" />;
-      case 11: return <Slide12_Final key="slide12" />;
+      case 8: return <Slide9a_Students key="slide9students" />;
+      case 9: return <Slide9b_AcademyOperations key="slide9b" />;
+      case 10: return <Slide10_Financials key="slide10" />;
+      case 11: return <Slide11_Deal key="slide11" />;
+      case 12: return <Slide12_Final key="slide12" />;
       default: return null;
     }
   };
