@@ -1,34 +1,72 @@
-import React, { useState, useEffect, useRef, useCallback } from 'react';
+import React, { useState, useEffect, useRef, useCallback, Suspense, lazy, useTransition } from 'react';
 import { AnimatePresence } from 'framer-motion';
 import { Navigation } from './components/Navigation';
 import { IntroScreen } from './components/IntroScreen';
-import { Slide1_Cover } from './components/slides/Slide1_Cover';
-import { Slide2_Origin } from './components/slides/Slide2_Origin';
-import { Slide3_Struggle } from './components/slides/Slide3_Struggle';
-import { Slide4_Turn } from './components/slides/Slide4_Turn';
-import { Slide5_Asset } from './components/slides/Slide5_Asset';
-import { Slide6_Gap } from './components/slides/Slide6_Gap';
-import { Slide7_TeamStructure } from './components/slides/Slide7_TeamStructure';
-import { Slide9_AcademyIntro } from './components/slides/Slide9_AcademyIntro';
-import { Slide9a_Students } from './components/slides/Slide9a_Students';
-import { Slide9b_AcademyOperations } from './components/slides/Slide9b_AcademyOperations';
-import { Slide10_Financials } from './components/slides/Slide10_Financials';
-import { Slide11_Deal } from './components/slides/Slide11_Deal';
-import { Slide12_Final } from './components/slides/Slide12_Final';
+import { LoadingSlide } from './components/LoadingSlide';
 
-const SLIDES_COUNT = 13;
+// Lazy Load Components
+const Slide1_Cover = lazy(() => import('./components/slides/Slide1_Cover').then(module => ({ default: module.Slide1_Cover })));
+const Slide2_Origin = lazy(() => import('./components/slides/Slide2_Origin').then(module => ({ default: module.Slide2_Origin })));
+const Slide3_Struggle = lazy(() => import('./components/slides/Slide3_Struggle').then(module => ({ default: module.Slide3_Struggle })));
+const Slide4_Turn = lazy(() => import('./components/slides/Slide4_Turn').then(module => ({ default: module.Slide4_Turn })));
+const Slide5_Asset = lazy(() => import('./components/slides/Slide5_Asset').then(module => ({ default: module.Slide5_Asset })));
+const Slide6_Gap = lazy(() => import('./components/slides/Slide6_Gap').then(module => ({ default: module.Slide6_Gap })));
+const Slide7_TeamStructure = lazy(() => import('./components/slides/Slide7_TeamStructure').then(module => ({ default: module.Slide7_TeamStructure })));
+const Slide8_Methodology = lazy(() => import('./components/slides/Slide8_Methodology').then(module => ({ default: module.Slide8_Methodology })));
+const Slide9_TractionStrategy = lazy(() => import('./components/slides/Slide9_TractionStrategy').then(module => ({ default: module.Slide9_TractionStrategy })));
+const Slide10_FinancialPath = lazy(() => import('./components/slides/Slide10_FinancialPath').then(module => ({ default: module.Slide10_FinancialPath })));
+const Slide11_Deal = lazy(() => import('./components/slides/Slide11_Deal').then(module => ({ default: module.Slide11_Deal })));
+const Slide12_Final = lazy(() => import('./components/slides/Slide12_Final').then(module => ({ default: module.Slide12_Final })));
+
+const SLIDES_COUNT = 12;
+
+// Map for preloading
+const CHECKPOINT_MODULES = [
+  () => import('./components/slides/Slide1_Cover'),
+  () => import('./components/slides/Slide2_Origin'),
+  () => import('./components/slides/Slide3_Struggle'),
+  () => import('./components/slides/Slide4_Turn'),
+  () => import('./components/slides/Slide5_Asset'),
+  () => import('./components/slides/Slide6_Gap'),
+  () => import('./components/slides/Slide7_TeamStructure'),
+  () => import('./components/slides/Slide8_Methodology'),
+  () => import('./components/slides/Slide9_TractionStrategy'),
+  () => import('./components/slides/Slide10_FinancialPath'),
+  () => import('./components/slides/Slide11_Deal'),
+  () => import('./components/slides/Slide12_Final'),
+];
 
 const App: React.FC = () => {
   const [showIntro, setShowIntro] = useState(true);
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isScrolling, setIsScrolling] = useState(false);
+  const [isPending, startTransition] = useTransition(); // Hook for seamless transitions
   const touchStartY = useRef(0);
 
   const handleStart = useCallback(() => {
     if (showIntro) {
       setShowIntro(false);
+      // Preload first few slides immediately after intro
+      CHECKPOINT_MODULES[0]();
+      CHECKPOINT_MODULES[1]();
     }
   }, [showIntro]);
+
+  // Smart Preload System
+  useEffect(() => {
+    if (!showIntro) {
+      // Preload next slide
+      const nextSlide = currentSlide + 1;
+      if (nextSlide < SLIDES_COUNT && CHECKPOINT_MODULES[nextSlide]) {
+        CHECKPOINT_MODULES[nextSlide]();
+      }
+      // Preload next+1 just in case
+      const nextNextSlide = currentSlide + 2;
+      if (nextNextSlide < SLIDES_COUNT && CHECKPOINT_MODULES[nextNextSlide]) {
+        CHECKPOINT_MODULES[nextNextSlide]();
+      }
+    }
+  }, [currentSlide, showIntro]);
 
   // Throttle slide changes to prevent rapid skipping
   const changeSlide = useCallback((direction: 'next' | 'prev') => {
@@ -37,19 +75,23 @@ const App: React.FC = () => {
       return;
     }
     
-    if (isScrolling) return;
+    if (isScrolling || isPending) return; // Wait for pending transition too
 
     setIsScrolling(true);
-    setCurrentSlide(prev => {
-      if (direction === 'next') {
-        return Math.min(prev + 1, SLIDES_COUNT - 1);
-      } else {
-        return Math.max(prev - 1, 0);
-      }
+    
+    // Use startTransition to keep old UI valid until new one is ready
+    startTransition(() => {
+      setCurrentSlide(prev => {
+        if (direction === 'next') {
+          return Math.min(prev + 1, SLIDES_COUNT - 1);
+        } else {
+          return Math.max(prev - 1, 0);
+        }
+      });
     });
 
     setTimeout(() => setIsScrolling(false), 1000); // 1s cool-down
-  }, [isScrolling, showIntro, handleStart]);
+  }, [isScrolling, showIntro, handleStart, isPending]);
 
   // Keyboard navigation
   useEffect(() => {
@@ -150,12 +192,11 @@ const App: React.FC = () => {
       case 4: return <Slide5_Asset key="slide5" />;
       case 5: return <Slide6_Gap key="slide6" />;
       case 6: return <Slide7_TeamStructure key="slide7" />;
-      case 7: return <Slide9_AcademyIntro key="slide9a" />;
-      case 8: return <Slide9a_Students key="slide9students" />;
-      case 9: return <Slide9b_AcademyOperations key="slide9b" />;
-      case 10: return <Slide10_Financials key="slide10" />;
-      case 11: return <Slide11_Deal key="slide11" />;
-      case 12: return <Slide12_Final key="slide12" />;
+      case 7: return <Slide8_Methodology key="slide8" />;
+      case 8: return <Slide9_TractionStrategy key="slide9" />;
+      case 9: return <Slide10_FinancialPath key="slide10" />;
+      case 10: return <Slide11_Deal key="slide11" />;
+      case 11: return <Slide12_Final key="slide12" />;
       default: return null;
     }
   };
@@ -174,16 +215,22 @@ const App: React.FC = () => {
           totalSlides={SLIDES_COUNT} 
           currentSlide={currentSlide} 
           onNavigate={(index) => {
-            if(!isScrolling && !showIntro) {
-              setCurrentSlide(index);
+            if(!isScrolling && !showIntro && !isPending) {
+              startTransition(() => {
+                setCurrentSlide(index);
+              });
             }
           }} 
         />
       )}
 
       {/* Main Slide Container */}
-      <AnimatePresence mode="wait">
-        {!showIntro && renderSlide()}
+      <AnimatePresence>
+        {!showIntro && (
+            <Suspense fallback={<LoadingSlide />}>
+                {renderSlide()}
+            </Suspense>
+        )}
       </AnimatePresence>
 
       {/* Progress Bar */}

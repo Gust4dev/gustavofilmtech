@@ -1,49 +1,45 @@
 import React, { useState, useEffect } from 'react';
 import { SlideWrapper } from '../SlideWrapper';
-// import { SmoothImage } from '../SmoothImage'; // Removed to optimize perfromance
 import { motion, AnimatePresence, LayoutGroup, useSpring, useTransform } from 'framer-motion';
-import { Users, Target, TrendingUp, Zap, Award, Layers } from 'lucide-react';
+// Adicionei Compass, Briefcase, LineChart para os novos papeis
+import { Users, Target, TrendingUp, Zap, Award, Layers, Compass, Briefcase, LineChart } from 'lucide-react';
 
-// --- DADOS DO TIME ---
+// --- DADOS DA ESTRUTURA (ABSTRACT ROLES) ---
 const TEAM_DATA = [
   {
-    id: 'gustavo',
-    name: 'Gustavo',
-    role: 'Atração & Autoridade',
-    image: '/images/gustavo.png',
+    id: 'strategy',
+    name: 'Estratégia',
+    role: 'Líder de Estratégia',
+    mainIcon: Compass, // Ícone central substituindo a foto
     color: 'red',
-    // Ajustei o scale para não ficar excessivo com o novo tamanho base
-    imageSettings: { scale: 1, x: 0, y: -5 }, 
     nodes: [
-      { title: 'Marketing & Branding', items: ['Tráfego e Atração', 'Posicionamento Premium'], icon: Zap },
-      { title: 'Filmtech Operação', items: ['Serviço de Alto Padrão', 'PPF / Customização'], icon: Layers },
-      { title: 'Filmtech Educação', isCounter: true, numericValue: 1200, prefix: '+', suffix: ' Alunos', items: ['Metodologia Proprietária'], icon: Award }
+      { title: 'Visão de Mercado', items: ['Análise de Tendências', 'Posicionamento de Marca'], icon: Zap },
+      { title: 'Inovação', items: ['Novos Modelos de Negócio', 'Diferenciação Competitiva'], icon: Layers },
+      { title: 'Educação Corporativa', isCounter: false, items: ['Metodologia Proprietária', 'Formação de Líderes'], icon: Award }
     ]
   },
   {
-    id: 'rodrigo',
-    name: 'Rodrigo',
-    role: 'Motor de Vendas',
-    image: '/images/Rodrigo.jpeg',
+    id: 'commercial',
+    name: 'Comercial',
+    role: 'Estratégia de Vendas',
+    mainIcon: LineChart,
     color: 'blue',
-    imageSettings: { scale: 1, x: 0, y: 0 },
     nodes: [
-      { title: 'Estrutura Uni Auto', kpi: 'R$ 5.5 MM/mês', items: ['Base de 22.000 Clientes'], icon: TrendingUp },
-      { title: 'Máquina de Vendas', specialVisual: 'crowd', numericValue: 350, items: ['Equipe de 350 Vendedores'], icon: Users },
-      { title: 'Governança', items: ['Previsibilidade de Caixa', 'Investimento Estratégico'], icon: Target }
+      { title: 'Tração de Receita', kpi: 'Escala Agressiva', items: ['Expansão de Market Share'], icon: TrendingUp },
+      { title: 'Força de Vendas', specialVisual: 'crowd', numericValue: 100, prefix: '+', suffix: '%', items: ['Performance e Conversão'], icon: Users }, // Adaptei para % de crescimento ou similar genérico
+      { title: 'Governança', items: ['Previsibilidade de Caixa', 'Metas Auditáveis'], icon: Target }
     ]
   },
   {
-    id: 'wallisson',
-    name: 'Wallisson',
-    role: 'A Gestão',
-    image: '/images/Wallisson.jpg',
+    id: 'investment',
+    name: 'Investimento',
+    role: 'Captador de Recursos',
+    mainIcon: Briefcase,
     color: 'emerald',
-    imageSettings: { scale: 1, x: 0, y: 0 },
     nodes: [
-      { title: 'Gestão de Pessoas (RH)', items: ['Cultura Alta Performance', 'Plano de Carreira'], icon: Users },
-      { title: 'Operacional', items: ['Processos e Indicadores', 'Treinamento de Equipes'], icon: Layers },
-      { title: 'Expansão', isCounter: true, numericValue: 500, prefix: 'Meta $', suffix: 'k/mês', items: ['Sustentação de Crescimento'], icon: TrendingUp }
+      { title: 'Relação com Investidores', items: ['Transparência', 'Reportes Estratégicos'], icon: Users },
+      { title: 'Eficiência Operacional', items: ['Otimização de Custos', 'Processos Escaláveis'], icon: Layers },
+      { title: 'Funding', isCounter: true, numericValue: 5, prefix: 'Múltiplos de', suffix: 'x', items: ['Retorno sobre Capital'], icon: TrendingUp }
     ]
   }
 ];
@@ -79,21 +75,9 @@ const cardVariants = {
 
 export const Slide7_TeamStructure: React.FC = () => {
     const [activeIds, setActiveIds] = useState<string[]>([]);
-    const [imagesLoadedCount, setImagesLoadedCount] = useState(0);
-    const [isReady, setIsReady] = useState(false);
+    // Removi states de carregamento de imagem (não necessário para ícones SVG)
+    
     const isAnyOpen = activeIds.length > 0;
-
-    // Monitorar quando todas as imagens carregaram
-    useEffect(() => {
-        if (imagesLoadedCount >= TEAM_DATA.length) {
-            // Pequeno delay safe para garantir o paint
-            setTimeout(() => setIsReady(true), 500);
-        }
-    }, [imagesLoadedCount]);
-
-    const handleImageLoad = () => {
-        setImagesLoadedCount(prev => prev + 1);
-    };
 
     const toggleId = (id: string) => {
         setActiveIds(prev => prev.includes(id) ? prev.filter(i => i !== id) : [...prev, id]);
@@ -101,20 +85,7 @@ export const Slide7_TeamStructure: React.FC = () => {
 
     return (
         <SlideWrapper className="bg-white overflow-hidden">
-            {/* Overlay de Carregamento Silencioso */}
-            <AnimatePresence>
-                {!isReady && (
-                    <motion.div 
-                        initial={{ opacity: 1 }}
-                        exit={{ opacity: 0 }}
-                        transition={{ duration: 1.5, ease: "easeInOut" }} // Fade mais lento
-                        className="absolute inset-0 z-50 bg-white pointer-events-none flex items-center justify-center"
-                    />
-                )}
-            </AnimatePresence>
-
             {/* Background fixo */}
-            {/* Background fixo - Otimizado com Gradients (livre de BLUR custoso) */}
             <div 
                 className="absolute inset-0 pointer-events-none"
                 style={{
@@ -126,25 +97,24 @@ export const Slide7_TeamStructure: React.FC = () => {
             />
 
             {/* CONTAINER PRINCIPAL */}
-            {/* Removi o stopPropagation daqui. Clicar no fundo = Próximo Slide (comportamento padrão) */}
             <div className="absolute inset-0 w-full h-full flex flex-col px-4 pt-8 md:pt-12 pb-4 overflow-y-auto custom-scrollbar z-10">
                 
                 <LayoutGroup>
                     
-                    {/* Header - Aumentei os textos */}
+                    {/* Header */}
                     <motion.div 
                         layout 
                         className={`text-center max-w-5xl mx-auto shrink-0 transition-all duration-500 ${isAnyOpen ? 'mb-6 scale-95 origin-top' : 'mb-12 scale-100'}`}
                     >
                         <motion.h2 layout className="text-4xl md:text-6xl font-black text-gray-900 mb-3 uppercase tracking-tight">
-                            A Trinca de <span className="text-brand-red">Escala</span>
+                            O Núcleo da <span className="text-brand-red">Expansão</span>
                         </motion.h2>
                         <motion.p layout className="text-gray-400 text-sm md:text-base font-bold tracking-[0.3em] uppercase">
-                            {isAnyOpen ? "Estrutura Detalhada" : "Clique nos líderes para expandir"}
+                            {isAnyOpen ? "Pilares Estratégicos" : "Clique nos ícones para detalhar"}
                         </motion.p>
                     </motion.div>
 
-                    {/* Grid Flexível - Aumentei max-w para ocupar mais tela */}
+                    {/* Grid Flexível */}
                     <div className="flex-1 flex flex-col md:flex-row items-stretch justify-center gap-6 md:gap-10 w-full max-w-[90%] mx-auto min-h-0">
                         {TEAM_DATA.map((leader) => (
                             <Column 
@@ -153,7 +123,6 @@ export const Slide7_TeamStructure: React.FC = () => {
                                 isOpen={activeIds.includes(leader.id)}
                                 isAnyOpen={isAnyOpen}
                                 onToggle={() => toggleId(leader.id)}
-                                onImageLoad={handleImageLoad}
                             />
                         ))}
                     </div>
@@ -165,7 +134,7 @@ export const Slide7_TeamStructure: React.FC = () => {
 };
 
 // --- COLUNA INDIVIDUAL ---
-const Column = ({ leader, isOpen, isAnyOpen, onToggle, onImageLoad }: any) => {
+const Column = ({ leader, isOpen, isAnyOpen, onToggle }: any) => {
     const isRed = leader.color === 'red';
     const isBlue = leader.color === 'blue';
     
@@ -179,6 +148,7 @@ const Column = ({ leader, isOpen, isAnyOpen, onToggle, onImageLoad }: any) => {
     return (
         <motion.div 
             layout 
+            style={{ willChange: 'transform' }}
             className={`
                 flex flex-col items-center relative w-full md:w-1/3 transition-all
                 ${isOpen ? 'justify-start' : 'justify-center'} 
@@ -187,37 +157,34 @@ const Column = ({ leader, isOpen, isAnyOpen, onToggle, onImageLoad }: any) => {
             {/* Avatar / Botão */}
             <motion.div 
                 layout 
-                onClick={(e) => { e.stopPropagation(); onToggle(); }} // AQUI MANTÉM O BLOQUEIO
+                style={{ willChange: 'transform' }}
+                onClick={(e) => { e.stopPropagation(); onToggle(); }}
                 className="cursor-pointer group flex flex-col items-center z-20"
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
             >
-                {/* Circulo da Imagem - AUMENTEI DRASTICAMENTE OS TAMANHOS */}
+                {/* Circulo do Ícone */}
                 <motion.div 
                     layout
+                    style={{ willChange: 'transform' }}
                     transition={{ type: "spring", stiffness: 250, damping: 25 }}
                     className={`
-                        relative rounded-full border-[4px] ${colors.border} p-1.5 shadow-xl bg-white overflow-hidden
+                        relative rounded-full border-[4px] ${colors.border} p-1.5 shadow-xl bg-white overflow-hidden flex items-center justify-center
                         ${isOpen ? 'w-40 h-40' : 'w-64 h-64 md:w-72 md:h-72'} 
                         ${isOpen ? 'shadow-2xl ring-4 ring-offset-4 ' + colors.line : ''}
                     `}
                 >
-                     <img 
-                        src={leader.image} 
-                        alt={leader.name} 
-                        onLoad={onImageLoad}
-                        className="w-full h-full object-cover rounded-full"
-                        loading="eager"
-                        decoding="async"
-                        style={{
-                            transform: `scale(${leader.imageSettings?.scale || 1}) translate(${leader.imageSettings?.x || 0}px, ${leader.imageSettings?.y || 0}px)`
-                        }}
+                    {/* Renderização do Ícone Central em vez de Imagem */}
+                    <leader.mainIcon 
+                        strokeWidth={1}
+                        className={`w-1/2 h-1/2 ${colors.text}`}
                     />
                 </motion.div>
 
-                {/* Nome/Cargo - Fonte maior */}
+                {/* Nome/Cargo */}
                 <motion.div 
                     layout
+                    style={{ willChange: 'transform' }}
                     className="-mt-6 bg-white shadow-lg border border-gray-100 px-6 py-3 rounded-full flex flex-col items-center z-30"
                 >
                     <span className="text-xl md:text-2xl font-black text-gray-900 leading-none">{leader.name}</span>
@@ -234,9 +201,9 @@ const Column = ({ leader, isOpen, isAnyOpen, onToggle, onImageLoad }: any) => {
                         animate="show"
                         exit="exit"
                         variants={treeVariants}
-                        onClick={(e) => e.stopPropagation()} // AQUI MANTÉM O BLOQUEIO TAMBÉM (clicar no vazio entre cards não muda slide)
+                        onClick={(e) => e.stopPropagation()} 
                     >
-                        {/* Linha Vertical - Mais grossa */}
+                        {/* Linha Vertical */}
                         <motion.div 
                             initial={{ height: 0 }}
                             animate={{ height: "100%" }}
@@ -245,7 +212,6 @@ const Column = ({ leader, isOpen, isAnyOpen, onToggle, onImageLoad }: any) => {
                             className={`absolute top-0 bottom-6 w-1 left-1/2 -translate-x-1/2 -z-10 ${colors.line}`}
                         />
 
-                        {/* Aumentei o max-w para os cards ficarem largos e legíveis */}
                         <div className="flex flex-col gap-4 w-full max-w-md">
                             {leader.nodes.map((node: any, i: number) => (
                                 <CardNode key={i} node={node} colors={colors} />
@@ -262,16 +228,13 @@ const CardNode = ({ node, colors }: any) => {
     return (
         <motion.div 
             variants={cardVariants}
-            // Padding maior, fonte maior
             className="bg-white border border-gray-100 rounded-2xl p-5 shadow-sm hover:shadow-xl transition-all relative z-10 w-full"
-            onClick={(e) => e.stopPropagation()} // Garante que clicar no card não mude o slide
+            onClick={(e) => e.stopPropagation()} 
         >
             <div className="flex items-center gap-4 mb-3">
                 <div className={`p-2.5 rounded-xl ${colors.bgSoft}`}>
-                    {/* Ícone maior */}
                     <node.icon size={24} className={colors.text} />
                 </div>
-                {/* Título maior */}
                 <h4 className="font-bold text-gray-900 text-lg leading-tight">
                     {node.title}
                 </h4>
@@ -281,9 +244,9 @@ const CardNode = ({ node, colors }: any) => {
                 <div className="mt-2 py-3 px-4 bg-gradient-to-r from-blue-50 to-transparent rounded-xl border-l-4 border-blue-500">
                     <div className="flex flex-col">
                         <span className="text-4xl font-black text-blue-600 leading-none mb-1">
-                            <AnimatedCounter value={node.numericValue} />
+                            <AnimatedCounter value={node.numericValue} prefix={node.prefix} suffix={node.suffix} />
                         </span>
-                        <span className="text-xs font-bold text-blue-500 uppercase tracking-wide">Vendedores Ativos</span>
+                        <span className="text-xs font-bold text-blue-500 uppercase tracking-wide">Crescimento Projetado</span>
                     </div>
                 </div>
             ) : node.isCounter ? (
@@ -304,7 +267,6 @@ const CardNode = ({ node, colors }: any) => {
                     {node.items.map((item: string, idx: number) => (
                          <div key={idx} className="flex items-center gap-3">
                             <div className={`w-1.5 h-1.5 rounded-full ${colors.bgSoft.replace('bg-', 'bg-opacity-100 bg-')}`} />
-                            {/* Texto dos itens normal maior */}
                             <span className="text-sm md:text-base text-gray-600 font-medium leading-tight">{item}</span>
                         </div>
                     ))}

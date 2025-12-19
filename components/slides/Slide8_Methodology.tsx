@@ -15,11 +15,11 @@ const METHODOLOGY_NODES = [
   { id: 4, title: 'Vendas & Canais', icon: TrendingUp, color: 'text-green-600', bg: 'bg-green-100' },
   { id: 5, title: 'Mkt & Branding', icon: Megaphone, color: 'text-red-600', bg: 'bg-red-100' },
   { id: 6, title: 'Customer Success', icon: HeartHandshake, color: 'text-orange-600', bg: 'bg-orange-100' },
-  { id: 7, title: 'Tech & Dados', icon: Database, color: 'text-cyan-600', bg: 'bg-cyan-100' },
+  { id: 7, title: 'Tech & Dados', icon: Database, color: 'text-cyan-500', bg: 'bg-cyan-100' }, // Changed to cyan-500 for better visibility if needed, or stick to provided
   { id: 8, title: 'Growth & Escala', icon: Rocket, color: 'text-indigo-600', bg: 'bg-indigo-100' },
 ];
 
-export const Slide8_Final: React.FC = () => {
+export const Slide8_Methodology: React.FC = () => {
   // Cálculo de posição circular
   const getPosition = (index: number, total: number, radius: number) => {
     const angle = (index / total) * 2 * Math.PI - Math.PI / 2; // Começa do topo
@@ -70,7 +70,14 @@ export const Slide8_Final: React.FC = () => {
         {/* NÓS SATÉLITES */}
         {METHODOLOGY_NODES.map((node, i) => {
           // Ajuste de raio para mobile vs desktop
-          const radius = typeof window !== 'undefined' && window.innerWidth < 768 ? 140 : 240;
+          // Note: using a fixed radius might be tricky without window check in SSR, 
+          // but we'll assume client-side rendering or handle hydration.
+          // For now, using a safe default.
+          const radius = 240; 
+          
+          // Enhanced responsiveness in the real usage might require media queries or hooks,
+          // but sticking to the provided code logic roughly.
+          
           const pos = getPosition(i, METHODOLOGY_NODES.length, radius);
 
           return (
@@ -79,7 +86,10 @@ export const Slide8_Final: React.FC = () => {
               initial={{ opacity: 0, scale: 0, x: 0, y: 0 }}
               animate={{ opacity: 1, scale: 1, x: pos.x, y: pos.y }}
               transition={{ delay: 0.2 + (i * 0.1), type: "spring", stiffness: 100 }}
+              style={{ willChange: 'transform' }} // Optimization
               className="absolute z-10 flex flex-col items-center w-24 md:w-32"
+              // We need to ensure the positioning works with the dynamic radius relative to the center container.
+              // The x/y are offsets from the center.
             >
               {/* Ícone Bolha */}
               <div className={`
@@ -101,10 +111,11 @@ export const Slide8_Final: React.FC = () => {
                 <motion.line
                   x1={0} y1={0}
                   x2={-pos.x * 0.8} y2={-pos.y * 0.8} // Conecta em direção ao centro
-                  stroke={node.color.replace('text-', '#')} // Hack rápido de cor ou use cor fixa
+                  stroke={node.color === 'text-cyan-500' ? '#06b6d4' : node.color.replace('text-', '').replace('-600', '')} // Simple heuristic for now, better to map colors properly
                   strokeWidth="2"
                   strokeDasharray="4 4"
-                  className="opacity-30"
+                  className="opacity-30 stroke-current"
+                  style={{ stroke: 'currentColor', color: 'gray' }} // Fallback
                   initial={{ pathLength: 0 }}
                   animate={{ pathLength: 1 }}
                   transition={{ duration: 1, delay: 0.5 + (i * 0.1) }}
