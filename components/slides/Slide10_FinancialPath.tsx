@@ -13,28 +13,29 @@ export const Slide10_FinancialPath: React.FC = () => {
 
   return (
     <SlideWrapper className="bg-white overflow-hidden">
-      <div className="w-full h-full flex flex-col items-center justify-center p-6 md:p-12 relative">
+      <div className="w-full h-full flex flex-col items-center justify-center p-[4vmin] relative">
         
         {/* Background Grid Sutil */}
         <div className="absolute inset-0 z-0 opacity-60" 
              style={{ 
                 backgroundImage: 'linear-gradient(#f0f0f0 1px, transparent 1px), linear-gradient(90deg, #f0f0f0 1px, transparent 1px)', 
-                backgroundSize: '40px 40px' 
+                backgroundSize: '4vmin 4vmin' 
              }} 
         />
 
         {/* HEADER */}
-        <div className="text-center mb-8 md:mb-12 relative z-10">
+        <div className="text-center mb-[6vmin] relative z-10">
             <TextReveal>
-                <div className="inline-flex items-center gap-2 px-4 py-2 bg-gray-50 border border-gray-100 rounded-full mb-6">
-                    <div className="w-2 h-2 bg-red-600 rounded-full animate-pulse" />
-                    <span className="text-gray-500 font-bold uppercase tracking-widest text-xs">
+                <div className="inline-flex items-center gap-2 px-[2vmin] py-[1vmin] bg-gray-50 border border-gray-100 rounded-full mb-[2vmin]">
+                    <div className="w-[1vmin] h-[1vmin] bg-red-600 rounded-full animate-pulse" />
+                    <span className="text-gray-500 font-bold uppercase tracking-widest text-xs" style={{ fontSize: '1.2vmin' }}>
                         Projeção Financeira
                     </span>
                 </div>
             </TextReveal>
             <TextReveal delay={0.1}>
-                <h2 className="text-4xl md:text-6xl font-black text-gray-900 leading-tight">
+                <h2 className="font-black text-gray-900 leading-tight"
+                    style={{ fontSize: 'clamp(32px, 8vmin, 100px)' }}>
                     A Matemática da <br/>
                     <span className="text-transparent bg-clip-text bg-gradient-to-r from-red-600 to-red-800">
                         Escala
@@ -42,17 +43,18 @@ export const Slide10_FinancialPath: React.FC = () => {
                 </h2>
             </TextReveal>
              <TextReveal delay={0.2}>
-                <p className="text-gray-400 text-sm font-bold tracking-[0.2em] uppercase mt-2">
+                <p className="text-gray-400 font-bold tracking-[0.2em] uppercase mt-[1vmin]"
+                   style={{ fontSize: 'clamp(10px, 1.5vmin, 20px)' }}>
                     A Jornada Validada até R$ 1MM/mês
                 </p>
             </TextReveal>
         </div>
 
         {/* === CHART CONTAINER === */}
-        <div className="w-full max-w-5xl h-[50vh] relative z-10 flex items-end justify-center gap-4 md:gap-16 pb-12">
+        <div className="w-full max-w-[90vmin] h-[55vh] relative z-10 flex items-end justify-center gap-[4vmin] md:gap-[8vmin] pb-[4vmin]">
             
             {/* Eixo Y Decorativo */}
-            <div className="absolute left-0 top-0 bottom-12 w-px bg-gradient-to-b from-transparent via-gray-200 to-gray-400 hidden md:block" />
+            <div className="absolute left-0 top-0 bottom-[4vmin] w-px bg-gradient-to-b from-transparent via-gray-200 to-gray-400 hidden md:block" />
 
             {/* FASE 1: VALIDAÇÃO */}
             <FinancialColumn 
@@ -99,11 +101,11 @@ export const Slide10_FinancialPath: React.FC = () => {
                 initial={{ opacity: 0, x: 20 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ delay: 1.5 }}
-                className="absolute top-1/4 right-0 md:-right-12 w-48 p-4 bg-white border border-gray-100 shadow-xl rounded-xl hidden md:block"
+                className="absolute top-1/4 right-0 md:-right-[5vmin] w-[25vmin] p-[1.5vmin] bg-white border border-gray-100 shadow-xl rounded-xl hidden md:block"
             >
                 <div className="flex items-start gap-2">
-                    <TrendingUp className="text-green-500 w-5 h-5 flex-shrink-0 mt-0.5" />
-                    <p className="text-xs text-gray-600 font-medium leading-relaxed">
+                    <TrendingUp className="text-green-500 flex-shrink-0 mt-0.5" style={{ width: '2vmin', height: '2vmin' }} />
+                    <p className="text-gray-600 font-medium leading-relaxed" style={{ fontSize: '1.2vmin' }}>
                         Nossa metodologia elimina o <b className="text-gray-900">"Vale da Morte"</b> entre a estruturação e a escala.
                     </p>
                 </div>
@@ -131,8 +133,6 @@ const Counter = ({ from, to, duration, delay }: { from: number, to: number, dura
             delay: delay,
             ease: "circOut",
             onUpdate(value) {
-                // Se for menor que 10, talvez seja MM (int), se maior, k. 
-                // Mas aqui o valor final é passado fixo. Vamos formatar simples.
                 node.textContent = Math.round(value).toString();
             }
         });
@@ -146,12 +146,13 @@ const Counter = ({ from, to, duration, delay }: { from: number, to: number, dura
 // 2. Coluna Financeira Clean
 const FinancialColumn = ({ label, sub, finalValue, suffix, height, color, icon: Icon, delay, trigger, isHero }: any) => {
     return (
-        <div className={`relative flex flex-col justify-end h-full group ${isHero ? 'w-32 md:w-48' : 'w-24 md:w-36'}`}>
+        <div className={`relative flex flex-col justify-end h-full group ${isHero ? 'w-[15vmin] md:w-[20vmin]' : 'w-[12vmin] md:w-[15vmin]'}`}>
             
             {/* Valor Flutuante */}
-            <div className={`mb-4 text-center transition-all duration-500 ${trigger ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`} style={{ transitionDelay: `${delay * 1000 + 500}ms` }}>
-                <div className={`flex items-center justify-center font-bold ${isHero ? 'text-4xl text-red-600' : 'text-xl text-gray-700'}`}>
-                    <span className="text-sm mr-1 opacity-50">R$</span>
+            <div className={`mb-[1.5vmin] text-center transition-all duration-500 ${trigger ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`} style={{ transitionDelay: `${delay * 1000 + 500}ms` }}>
+                <div className={`flex items-center justify-center font-bold ${isHero ? 'text-red-600' : 'text-gray-700'}`}
+                     style={{ fontSize: isHero ? 'clamp(24px, 4vmin, 60px)' : 'clamp(16px, 2.5vmin, 40px)' }}>
+                    <span className="text-sm mr-1 opacity-50" style={{ fontSize: '0.5em' }}>R$</span>
                     <Counter from={0} to={finalValue} duration={1} delay={delay + 0.5} />
                     <span className="ml-0.5">{suffix}</span>
                 </div>
@@ -168,8 +169,8 @@ const FinancialColumn = ({ label, sub, finalValue, suffix, height, color, icon: 
                 <div className="absolute inset-0 z-10 bg-gradient-to-tr from-transparent via-white/10 to-transparent -translate-x-[150%] animate-shimmer" />
                 
                 {/* Ícone */}
-                <div className="absolute bottom-6 left-1/2 -translate-x-1/2 text-white/40 group-hover:text-white group-hover:scale-110 transition-all duration-300">
-                    <Icon size={isHero ? 32 : 24} />
+                <div className="absolute bottom-[2vmin] left-1/2 -translate-x-1/2 text-white/40 group-hover:text-white group-hover:scale-110 transition-all duration-300">
+                    <Icon style={{ width: isHero ? '4vmin' : '2.5vmin', height: isHero ? '4vmin' : '2.5vmin' }} />
                 </div>
 
                 {/* Gradiente Overlay */}
@@ -177,9 +178,11 @@ const FinancialColumn = ({ label, sub, finalValue, suffix, height, color, icon: 
             </motion.div>
 
             {/* Legenda */}
-            <div className="mt-6 text-center">
-                <p className={`font-bold uppercase tracking-wider ${isHero ? 'text-sm text-red-700' : 'text-xs text-gray-500'}`}>{label}</p>
-                <p className="text-[10px] text-gray-400 mt-1 max-w-[80%] mx-auto leading-tight">{sub}</p>
+            <div className="mt-[2vmin] text-center">
+                <p className={`font-bold uppercase tracking-wider ${isHero ? 'text-red-700' : 'text-gray-500'}`}
+                   style={{ fontSize: 'clamp(10px, 1.2vmin, 16px)' }}>{label}</p>
+                <p className="text-gray-400 mt-1 max-w-[90%] mx-auto leading-tight"
+                   style={{ fontSize: 'clamp(8px, 1vmin, 12px)' }}>{sub}</p>
             </div>
 
             <style>{`

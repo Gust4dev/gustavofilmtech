@@ -12,30 +12,32 @@ export const Slide6_Gap: React.FC = () => {
           <div className="absolute bottom-0 left-0 w-[50vh] h-[50vh] bg-red-50/40 rounded-full blur-[100px]" />
       </div>
 
-      <div className="container mx-auto px-6 h-full flex flex-col justify-center items-center relative z-10">
+      <div className="container mx-auto px-[4vmin] h-full flex flex-col justify-center items-center relative z-10">
         
         {/* Header Section */}
         <motion.div 
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, ease: "easeOut" }}
-            className="text-center max-w-4xl mb-16"
+            className="text-center max-w-[80vmin] mb-[6vmin]"
         >
-          <h2 className="text-4xl md:text-6xl font-black text-gray-900 mb-6 leading-[1.1] tracking-tight">
+          <h2 className="font-black text-gray-900 mb-[2vmin] leading-[1.1] tracking-tight"
+              style={{ fontSize: 'clamp(32px, 7vmin, 100px)' }}>
              O CAMINHO ATÉ AQUI FOI <br/>
              <span className="text-brand-red">NA FORÇA DA MÃO.</span>
           </h2>
           
-          <div className="w-24 h-1.5 bg-gray-100 rounded-full mx-auto mb-8" />
+          <div className="w-[12vmin] h-1.5 bg-gray-100 rounded-full mx-auto mb-[4vmin]" />
 
-          <p className="text-gray-500 text-lg md:text-2xl font-medium leading-relaxed max-w-2xl mx-auto">
+          <p className="text-gray-500 font-medium leading-relaxed max-w-2xl mx-auto"
+             style={{ fontSize: 'clamp(14px, 2vmin, 28px)' }}>
             Crescemos na intuição, no suor e na coragem. <br className="hidden md:block" />
             Mas escalar para <span className="text-gray-900 font-bold bg-gray-100 px-2 py-0.5 rounded">R$ 500 Mil/Mês</span> exige mais.
           </p>
         </motion.div>
 
         {/* Cards Grid */}
-        <div className="grid md:grid-cols-3 gap-6 w-full max-w-6xl">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-[3vmin] w-full max-w-[90vmin]">
           <GapCard 
             icon={BrainCircuit}
             title="Gestão & Governança"
@@ -62,10 +64,11 @@ export const Slide6_Gap: React.FC = () => {
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             transition={{ delay: 1, duration: 1 }}
-            className="mt-16 flex items-center gap-3 text-gray-400 text-xs font-bold tracking-[0.2em] uppercase"
+            className="mt-[6vmin] flex items-center gap-[1vmin] text-gray-400 font-bold tracking-[0.2em] uppercase"
+            style={{ fontSize: 'clamp(10px, 1.2vmin, 14px)' }}
         >
             <span>Próxima Fase</span>
-            <ArrowRight size={16} className="text-brand-red animate-pulse" />
+            <ArrowRight className="text-brand-red animate-pulse" style={{ width: '2vmin', height: '2vmin' }} />
         </motion.div>
 
       </div>
@@ -73,7 +76,7 @@ export const Slide6_Gap: React.FC = () => {
   );
 };
 
-// Componente do Card Refatorado
+// Componente do Card Refatorado (com vmin internos)
 const GapCard = ({ icon: Icon, title, subtitle, delay, isCenter = false }: any) => (
   <motion.div
     initial={{ opacity: 0, y: 40 }}
@@ -81,7 +84,7 @@ const GapCard = ({ icon: Icon, title, subtitle, delay, isCenter = false }: any) 
     transition={{ delay, duration: 0.6, type: "spring", stiffness: 100 }}
     whileHover={{ y: -8 }}
     className={`
-        relative flex flex-col items-start p-8 rounded-3xl border transition-all duration-300 h-full group
+        relative flex flex-col items-start p-[3vmin] rounded-3xl border transition-all duration-300 h-full group
         ${isCenter 
             ? 'bg-white border-brand-red/20 shadow-xl shadow-brand-red/5 z-10 scale-105' 
             : 'bg-white border-gray-100 shadow-lg hover:shadow-xl hover:border-gray-200'
@@ -90,23 +93,25 @@ const GapCard = ({ icon: Icon, title, subtitle, delay, isCenter = false }: any) 
   >
     {/* Icon Wrapper */}
     <div className={`
-        mb-6 p-4 rounded-2xl transition-colors duration-300
+        mb-[2vmin] p-[1.5vmin] rounded-2xl transition-colors duration-300
         ${isCenter ? 'bg-brand-red text-white' : 'bg-red-50 text-brand-red group-hover:bg-brand-red group-hover:text-white'}
     `}>
-      <Icon size={32} strokeWidth={1.5} />
+      <Icon strokeWidth={1.5} style={{ width: '4vmin', height: '4vmin' }} />
     </div>
 
     {/* Content */}
-    <h3 className="text-xl md:text-2xl font-bold text-gray-900 mb-3 tracking-tight">
+    <h3 className="font-bold text-gray-900 mb-[1vmin] tracking-tight"
+        style={{ fontSize: 'clamp(16px, 2.5vmin, 32px)' }}>
         {title}
     </h3>
-    <p className="text-gray-500 text-sm leading-relaxed font-medium">
+    <p className="text-gray-500 leading-relaxed font-medium"
+       style={{ fontSize: 'clamp(12px, 1.8vmin, 20px)' }}>
         {subtitle}
     </p>
 
     {/* Decorative Bottom Line */}
     <div className={`
-        absolute bottom-0 left-8 right-8 h-1 rounded-t-full transition-all duration-500
+        absolute bottom-0 left-[2vmin] right-[2vmin] h-1 rounded-t-full transition-all duration-500
         ${isCenter ? 'bg-brand-red' : 'bg-transparent group-hover:bg-brand-red/20'}
     `} />
   </motion.div>

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { SlideWrapper, TextReveal } from '../SlideWrapper';
+import { SlideWrapper } from '../SlideWrapper';
 import { SmoothImage } from '../SmoothImage';
 import { ChevronRight } from 'lucide-react';
 
@@ -38,86 +38,84 @@ export const Slide4_Turn: React.FC = () => {
     
     if (isAnimating) return;
     
-    // 1. Inicia animação de saída do texto
     setIsAnimating(true);
-
     const nextStep = (activeStep + 1) % TIMELINE_STEPS.length;
-    
-    // 2. Troca a Imagem IMEDIATAMENTE (pedido do usuário)
     setActiveStep(nextStep);
 
-    // 3. Aguarda a animação rápida (300ms) para trocar o texto e trazê-lo de volta
     setTimeout(() => {
       setTextStep(nextStep);
       setIsAnimating(false);
     }, 300); 
   };
 
-  const currentData = TIMELINE_STEPS[textStep]; // O texto renderiza baseado no estado com delay
+  const currentData = TIMELINE_STEPS[textStep];
 
   return (
     <SlideWrapper className="bg-white text-black overflow-hidden">
       <div className="flex flex-col md:flex-row w-full h-full relative">
         
         {/* --- LADO ESQUERDO: Narrativa --- */}
-        <div className="w-full md:w-5/12 h-full flex flex-col justify-center px-8 md:px-16 z-20 bg-white relative">
+        <div className="w-full md:w-5/12 h-[60%] md:h-full flex flex-col justify-center px-[6vmin] relative z-20 bg-white order-2 md:order-1">
           
           {/* Header Fixo */}
-          <div className="absolute top-12 left-8 md:left-16">
-            <h2 className="text-2xl font-bold text-gray-400 uppercase tracking-widest flex items-center gap-2">
+          <div className="absolute top-[3vmin] md:top-12 left-[6vmin] md:left-16">
+            <h2 className="font-bold text-gray-400 uppercase tracking-widest flex items-center gap-2"
+                style={{ fontSize: 'clamp(12px, 2vmin, 20px)' }}>
               <span className="w-8 h-[2px] bg-brand-red"></span>
               Nossa Jornada
             </h2>
           </div>
 
-          {/* Conteúdo Dinâmico com Animação Controlada (Blur/Fade) */}
+          {/* Conteúdo Dinâmico */}
           <div 
-             className={`transition-all duration-300 ease-in-out transform ${
+             className={`transition-all duration-300 ease-in-out transform flex flex-col justify-center ${
                isAnimating 
-                 ? 'opacity-0 blur-md translate-y-4' // Estado de Saída (Mais rápido e sutil)
-                 : 'opacity-100 blur-0 translate-y-0' // Estado de Entrada/Visível
+                 ? 'opacity-0 blur-md translate-y-4' 
+                 : 'opacity-100 blur-0 translate-y-0' 
              }`}
           >
-            <div className="mb-4">
-              <span className="text-6xl md:text-8xl font-black text-transparent bg-clip-text bg-gradient-to-r from-brand-red to-black opacity-90 font-display">
+            <div className="mb-[1vmin]">
+              <span className="font-black text-transparent bg-clip-text bg-gradient-to-r from-brand-red to-black opacity-90 font-display leading-none"
+                    style={{ fontSize: 'clamp(64px, 15vmin, 200px)' }}>
                 {currentData.year}
               </span>
             </div>
             
-            <h3 className="text-3xl md:text-4xl font-bold text-black mb-6 leading-tight min-h-[1.2em]">
+            <h3 className="font-bold text-black mb-[2vmin] leading-tight min-h-[1.2em]"
+                style={{ fontSize: 'clamp(24px, 5vmin, 60px)' }}>
               {currentData.highlight}
             </h3>
 
-            <div className="h-1 w-20 bg-brand-red mb-6 rounded-full"></div>
+            <div className="h-1 w-[10vmin] bg-brand-red mb-[3vmin] rounded-full"></div>
 
-            <p className="text-lg md:text-xl text-gray-600 leading-relaxed font-medium max-w-md min-h-[6em]">
+            <p className="text-gray-600 leading-relaxed font-medium max-w-[50vmin] min-h-[6em]"
+               style={{ fontSize: 'clamp(14px, 2vmin, 24px)' }}>
               {currentData.text}
             </p>
           </div>
 
           {/* Controles / Navegação Inferior */}
-          <div className="absolute bottom-12 left-8 md:left-16 right-8">
-            <div className="flex items-center gap-4">
+          <div className="absolute bottom-[3vmin] left-[6vmin] md:left-16 right-8">
+            <div className="flex items-center gap-[2vmin]">
               {TIMELINE_STEPS.map((step, idx) => (
                 <button
                   key={step.year}
                   onClick={(e) => { 
                     e.stopPropagation(); 
                     if (idx === activeStep || isAnimating) return;
-                    
                     setIsAnimating(true);
-                    setActiveStep(idx); // Imagem instantânea
-                    
-                    setTimeout(() => {
-                        setTextStep(idx); // Texto com delay
-                        setIsAnimating(false);
-                    }, 300);
+                    setActiveStep(idx); 
+                    setTimeout(() => { setTextStep(idx); setIsAnimating(false); }, 300);
                   }}
-                  className={`group relative h-16 w-16 rounded-xl overflow-hidden transition-all duration-300 border-2 ${
+                  className={`group relative rounded-xl overflow-hidden transition-all duration-300 border-2 ${
                     activeStep === idx 
-                      ? 'border-brand-red w-24 shadow-lg scale-105' 
+                      ? 'border-brand-red shadow-lg scale-105' 
                       : 'border-transparent opacity-50 hover:opacity-100 grayscale hover:grayscale-0'
                   }`}
+                  style={{ 
+                    width: activeStep === idx ? '12vmin' : '8vmin',
+                    height: '8vmin'
+                  }}
                 >
                   <img 
                     src={step.image} 
@@ -126,7 +124,7 @@ export const Slide4_Turn: React.FC = () => {
                   />
                   {activeStep === idx && (
                     <div className="absolute inset-0 bg-black/20 flex items-center justify-center">
-                       <span className="text-xs font-bold text-white">{step.year}</span>
+                       <span className="font-bold text-white leading-none" style={{ fontSize: '1.5vmin' }}>{step.year}</span>
                     </div>
                   )}
                 </button>
@@ -137,10 +135,9 @@ export const Slide4_Turn: React.FC = () => {
 
         {/* --- LADO DIREITO: Visual Hero --- */}
         <div 
-          className="w-full md:w-7/12 h-full relative cursor-pointer group overflow-hidden bg-black"
+          className="w-full md:w-7/12 h-[40%] md:h-full relative cursor-pointer group overflow-hidden bg-black order-1 md:order-2"
           onClick={handleNext}
         >
-          {/* Background Image com transição suave */}
           {TIMELINE_STEPS.map((step, idx) => (
             <div
               key={step.year}
@@ -148,8 +145,8 @@ export const Slide4_Turn: React.FC = () => {
                 activeStep === idx 
                   ? 'opacity-100 translate-x-0 scale-100' 
                   : activeStep > idx 
-                    ? 'opacity-0 -translate-x-full scale-110' // Imagens passadas vão para a esquerda
-                    : 'opacity-0 translate-x-full scale-110'  // Imagens futuras vêm da direita
+                    ? 'opacity-0 -translate-x-full scale-110' 
+                    : 'opacity-0 translate-x-full scale-110' 
               }`}
             >
               <SmoothImage
@@ -157,19 +154,16 @@ export const Slide4_Turn: React.FC = () => {
                 alt={`Filmtech ${step.year}`}
                 className="w-full h-full object-cover opacity-90 group-hover:opacity-100 transition-opacity duration-300"
               />
-              {/* Overlay Gradiente para leitura se necessário */}
               <div className="absolute inset-0 bg-gradient-to-r from-white via-transparent to-transparent opacity-20 md:opacity-0" />
             </div>
           ))}
 
-          {/* Prompt de Clique */}
           <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
              <div className="bg-transparent text-white drop-shadow-2xl">
-                <ChevronRight className="w-16 h-16" />
+                <ChevronRight style={{ width: '8vmin', height: '8vmin' }} />
              </div>
           </div>
 
-          {/* Efeito de "Flash" na troca */}
           <div className={`absolute inset-0 bg-white pointer-events-none transition-opacity duration-300 ${isAnimating ? 'opacity-20' : 'opacity-0'}`} />
         </div>
 

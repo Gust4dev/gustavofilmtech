@@ -12,7 +12,7 @@ const Slide4_Turn = lazy(() => import('./components/slides/Slide4_Turn').then(mo
 const Slide5_Asset = lazy(() => import('./components/slides/Slide5_Asset').then(module => ({ default: module.Slide5_Asset })));
 const Slide6_Gap = lazy(() => import('./components/slides/Slide6_Gap').then(module => ({ default: module.Slide6_Gap })));
 const Slide7_TeamStructure = lazy(() => import('./components/slides/Slide7_TeamStructure').then(module => ({ default: module.Slide7_TeamStructure })));
-const Slide8_Methodology = lazy(() => import('./components/slides/Slide8_Methodology').then(module => ({ default: module.Slide8_Methodology })));
+const Slide8_Methodology = lazy(() => import('./components/slides/Slide8_Final').then(module => ({ default: module.Slide8_Final })));
 const Slide9_TractionStrategy = lazy(() => import('./components/slides/Slide9_TractionStrategy').then(module => ({ default: module.Slide9_TractionStrategy })));
 const Slide10_FinancialPath = lazy(() => import('./components/slides/Slide10_FinancialPath').then(module => ({ default: module.Slide10_FinancialPath })));
 const Slide11_Deal = lazy(() => import('./components/slides/Slide11_Deal').then(module => ({ default: module.Slide11_Deal })));
@@ -29,7 +29,7 @@ const CHECKPOINT_MODULES = [
   () => import('./components/slides/Slide5_Asset'),
   () => import('./components/slides/Slide6_Gap'),
   () => import('./components/slides/Slide7_TeamStructure'),
-  () => import('./components/slides/Slide8_Methodology'),
+  () => import('./components/slides/Slide8_Final'),
   () => import('./components/slides/Slide9_TractionStrategy'),
   () => import('./components/slides/Slide10_FinancialPath'),
   () => import('./components/slides/Slide11_Deal'),

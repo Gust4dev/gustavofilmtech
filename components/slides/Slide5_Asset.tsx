@@ -17,26 +17,38 @@ const assets = [
 export const Slide5_Asset: React.FC = () => {
   return (
     <SlideWrapper className="bg-gray-50 text-black">
-      <div className="container mx-auto px-6 h-full flex flex-col justify-center">
+      <div className="container mx-auto px-[5vmin] h-full flex flex-col justify-center">
         
-        <div className="text-center mb-16">
+        <div className="text-center mb-[6vmin]">
           <TextReveal delay={0.1}>
-            <span className="text-brand-red font-bold uppercase tracking-widest text-sm">Valuation</span>
+            <span className="text-brand-red font-bold uppercase tracking-widest"
+                  style={{ fontSize: 'clamp(10px, 1.5vmin, 16px)' }}>
+              Valuation
+            </span>
           </TextReveal>
           <TextReveal delay={0.2}>
-            <h2 className="text-4xl md:text-6xl font-display font-black text-gray-900 mt-2">
+            <h2 className="font-display font-black text-gray-900 mt-[1vmin]"
+                style={{ fontSize: 'clamp(32px, 8vmin, 100px)' }}>
               O PATAMAR ATUAL
             </h2>
-            <p className="text-xl text-gray-500 mt-4">Uma base sólida construída com excelência.</p>
+            <p className="text-gray-500 mt-[2vmin]"
+               style={{ fontSize: 'clamp(16px, 2.5vmin, 32px)' }}>
+              Uma base sólida construída com excelência.
+            </p>
           </TextReveal>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-x-12 max-w-4xl mx-auto w-full">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-[2vmin] md:gap-x-[4vmin] max-w-[80vmin] mx-auto w-full">
           {assets.map((item, index) => (
             <TextReveal key={index} delay={0.3 + (index * 0.1)} className="w-full">
-              <div className="flex items-center gap-4 p-4 bg-white shadow-sm border border-gray-100 hover:border-brand-red/50 hover:shadow-md transition-all duration-300 rounded-lg group">
-                <CheckCircle2 className="w-6 h-6 text-brand-red group-hover:scale-110 transition-transform" />
-                <span className="text-lg font-semibold text-gray-800">{item}</span>
+              <div className="flex items-center gap-[2vmin] p-[2vmin] bg-white shadow-sm border border-gray-100 hover:border-brand-red/50 hover:shadow-md transition-all duration-300 rounded-lg group">
+                <CheckCircle2 className="text-brand-red group-hover:scale-110 transition-transform" 
+                              style={{ width: '3vmin', height: '3vmin' }}
+                />
+                <span className="font-semibold text-gray-800"
+                      style={{ fontSize: 'clamp(14px, 2vmin, 24px)' }}>
+                  {item}
+                </span>
               </div>
             </TextReveal>
           ))}
