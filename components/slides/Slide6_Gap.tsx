@@ -1,118 +1,88 @@
 import React from 'react';
 import { SlideWrapper } from '../SlideWrapper';
 import { motion } from 'framer-motion';
-import { TrendingUp, BrainCircuit, Landmark, ArrowRight } from 'lucide-react';
+import { TrendingUp, ShieldCheck, BrainCircuit, Rocket } from 'lucide-react';
 
 export const Slide6_Gap: React.FC = () => {
+  const GAPS = [
+    {
+      icon: ShieldCheck,
+      title: "Gestão & Governança",
+      desc: "Sair do 'apagar incêndio' para processos auditáveis e organizados.",
+      color: "text-blue-500",
+      delay: 0.2
+    },
+    {
+      icon: TrendingUp,
+      title: "Inteligência Comercial",
+      desc: "Transformar indicações aleatórias em uma máquina de vendas previsível.",
+      color: "text-emerald-500",
+      delay: 0.4
+    },
+    {
+      icon: BrainCircuit, // Ícone de Cérebro/Tech
+      title: "Metodologia de Growth", // Mudança chave aqui
+      desc: "Trocar a intuição e o 'suor' por tecnologia e análise de dados.",
+      color: "text-brand-red",
+      delay: 0.6
+    }
+  ];
+
   return (
-    <SlideWrapper className="bg-white relative overflow-hidden">
-      {/* Background Decorativo Sutil */}
-      <div className="absolute inset-0 pointer-events-none">
-          <div className="absolute top-0 right-0 w-[60vh] h-[60vh] bg-gray-50 rounded-full blur-[120px]" />
-          <div className="absolute bottom-0 left-0 w-[50vh] h-[50vh] bg-red-50/40 rounded-full blur-[100px]" />
-      </div>
+    <SlideWrapper className="bg-gray-50 flex flex-col justify-center relative overflow-hidden">
+      
+      {/* Background Element */}
+      <div className="absolute top-0 right-0 w-1/3 h-full bg-gray-100 -skew-x-12 translate-x-20 z-0" />
 
-      <div className="container mx-auto px-[4vmin] h-full flex flex-col justify-center items-center relative z-10">
+      <div className="max-w-6xl mx-auto w-full px-6 relative z-10 flex flex-col md:flex-row gap-12 items-center">
         
-        {/* Header Section */}
-        <motion.div 
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, ease: "easeOut" }}
-            className="text-center max-w-[80vmin] mb-[6vmin]"
-        >
-          <h2 className="font-black text-gray-900 mb-[2vmin] leading-[1.1] tracking-tight"
-              style={{ fontSize: 'clamp(32px, 7vmin, 100px)' }}>
-             O CAMINHO ATÉ AQUI FOI <br/>
-             <span className="text-brand-red">NA FORÇA DA MÃO.</span>
-          </h2>
-          
-          <div className="w-[12vmin] h-1.5 bg-gray-100 rounded-full mx-auto mb-[4vmin]" />
+        {/* Coluna da Esquerda: A Dor */}
+        <div className="w-full md:w-1/2">
+          <motion.div
+            initial={{ opacity: 0, x: -50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8 }}
+          >
+            <h2 className="text-4xl md:text-5xl font-black text-gray-900 uppercase leading-tight mb-6">
+              O Caminho até aqui foi na <span className="text-brand-red decoration-4 underline decoration-brand-red/30">Força do Braço</span>.
+            </h2>
+            
+            <p className="text-xl text-gray-600 font-medium mb-6">
+              Crescemos na intuição, no suor e na coragem.
+              <br/>
+              <strong className="text-gray-900">Mas escalar de verdade exige mais.</strong>
+            </p>
 
-          <p className="text-gray-500 font-medium leading-relaxed max-w-2xl mx-auto"
-             style={{ fontSize: 'clamp(14px, 2vmin, 28px)' }}>
-            Crescemos na intuição, no suor e na coragem. <br className="hidden md:block" />
-            Mas escalar para <span className="text-gray-900 font-bold bg-gray-100 px-2 py-0.5 rounded">R$ 500 Mil/Mês</span> exige mais.
-          </p>
-        </motion.div>
-
-        {/* Cards Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-[3vmin] w-full max-w-[90vmin]">
-          <GapCard 
-            icon={BrainCircuit}
-            title="Gestão & Governança"
-            subtitle="Estrutura para suportar o peso do crescimento."
-            delay={0.2}
-          />
-          <GapCard 
-            icon={TrendingUp}
-            title="Inteligência Comercial"
-            subtitle="Transformar demanda orgânica em vendas previsíveis."
-            delay={0.4}
-            isCenter={true} // Destaque sutil para o card do meio
-          />
-          <GapCard 
-            icon={Landmark}
-            title="Capital Estratégico"
-            subtitle="Fôlego financeiro para acelerar sem riscos."
-            delay={0.6}
-          />
+            <div className="h-1 w-20 bg-brand-red rounded-full" />
+          </motion.div>
         </div>
 
-        {/* Call to Action Visual (Seta indicando futuro) */}
-        <motion.div 
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            transition={{ delay: 1, duration: 1 }}
-            className="mt-[6vmin] flex items-center gap-[1vmin] text-gray-400 font-bold tracking-[0.2em] uppercase"
-            style={{ fontSize: 'clamp(10px, 1.2vmin, 14px)' }}
-        >
-            <span>Próxima Fase</span>
-            <ArrowRight className="text-brand-red animate-pulse" style={{ width: '2vmin', height: '2vmin' }} />
-        </motion.div>
+        {/* Coluna da Direita: Os 3 Pilares da Mudança */}
+        <div className="w-full md:w-1/2 flex flex-col gap-6">
+          {GAPS.map((item, i) => (
+            <motion.div
+              key={i}
+              initial={{ opacity: 0, x: 50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ delay: item.delay, type: 'spring', stiffness: 50 }}
+              className="bg-white p-6 rounded-2xl shadow-lg border-l-4 border-transparent hover:border-brand-red transition-all group"
+            >
+              <div className="flex items-start gap-4">
+                <div className={`p-3 rounded-lg bg-gray-50 group-hover:bg-gray-100 transition-colors ${item.color}`}>
+                  <item.icon size={28} />
+                </div>
+                <div>
+                  <h3 className="text-xl font-black text-gray-900 mb-1">{item.title}</h3>
+                  <p className="text-gray-500 font-medium leading-snug">
+                    {item.desc}
+                  </p>
+                </div>
+              </div>
+            </motion.div>
+          ))}
+        </div>
 
       </div>
     </SlideWrapper>
   );
 };
-
-// Componente do Card Refatorado (com vmin internos)
-const GapCard = ({ icon: Icon, title, subtitle, delay, isCenter = false }: any) => (
-  <motion.div
-    initial={{ opacity: 0, y: 40 }}
-    whileInView={{ opacity: 1, y: 0 }}
-    transition={{ delay, duration: 0.6, type: "spring", stiffness: 100 }}
-    whileHover={{ y: -8 }}
-    className={`
-        relative flex flex-col items-start p-[3vmin] rounded-3xl border transition-all duration-300 h-full group
-        ${isCenter 
-            ? 'bg-white border-brand-red/20 shadow-xl shadow-brand-red/5 z-10 scale-105' 
-            : 'bg-white border-gray-100 shadow-lg hover:shadow-xl hover:border-gray-200'
-        }
-    `}
-  >
-    {/* Icon Wrapper */}
-    <div className={`
-        mb-[2vmin] p-[1.5vmin] rounded-2xl transition-colors duration-300
-        ${isCenter ? 'bg-brand-red text-white' : 'bg-red-50 text-brand-red group-hover:bg-brand-red group-hover:text-white'}
-    `}>
-      <Icon strokeWidth={1.5} style={{ width: '4vmin', height: '4vmin' }} />
-    </div>
-
-    {/* Content */}
-    <h3 className="font-bold text-gray-900 mb-[1vmin] tracking-tight"
-        style={{ fontSize: 'clamp(16px, 2.5vmin, 32px)' }}>
-        {title}
-    </h3>
-    <p className="text-gray-500 leading-relaxed font-medium"
-       style={{ fontSize: 'clamp(12px, 1.8vmin, 20px)' }}>
-        {subtitle}
-    </p>
-
-    {/* Decorative Bottom Line */}
-    <div className={`
-        absolute bottom-0 left-[2vmin] right-[2vmin] h-1 rounded-t-full transition-all duration-500
-        ${isCenter ? 'bg-brand-red' : 'bg-transparent group-hover:bg-brand-red/20'}
-    `} />
-  </motion.div>
-);
