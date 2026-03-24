@@ -4,7 +4,7 @@ export const CONFIG = {
      * Set to true to enable the corporate access restriction overlay.
      * Set to false to allow normal access to the pitch deck.
      */
-    IS_LOCKED: true,
+    IS_LOCKED: false,
 
     /**
      * AUTHENTICATION TEXTS
