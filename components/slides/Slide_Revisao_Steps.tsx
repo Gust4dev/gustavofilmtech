@@ -12,7 +12,7 @@ export const Slide_Revisao_Steps: React.FC = () => {
   ];
 
   return (
-    <SlideWrapper className="bg-white">
+    <SlideWrapper className="bg-white text-black" showFlare showLogo>
       <div className="container mx-auto px-[5vmin] h-full flex flex-col justify-center">
         <TextReveal delay={0.1}>
           <h2 className="text-gray-900 font-black text-5xl md:text-7xl uppercase leading-tight mb-16 text-center">

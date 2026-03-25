@@ -4,7 +4,7 @@ import { SlideWrapper, TextReveal } from '../SlideWrapper';
 
 export const Slide_Acabamento_Details: React.FC = () => {
   return (
-    <SlideWrapper className="bg-white overflow-hidden">
+    <SlideWrapper className="bg-white text-black overflow-hidden" showFlare showLogo>
       <div className="absolute top-0 right-0 w-1/2 h-full bg-gray-50 -skew-x-[15deg] translate-x-1/4 pointer-events-none" />
       
       <div className="relative z-10 container mx-auto px-[5vmin] grid grid-cols-1 md:grid-cols-2 gap-12 h-full items-center">

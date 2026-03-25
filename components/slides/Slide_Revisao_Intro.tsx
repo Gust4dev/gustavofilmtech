@@ -5,7 +5,15 @@ import { SlideProps } from '../../types';
 
 export const Slide_Revisao_Intro: React.FC<SlideProps> = ({ sectionNumber }) => {
   return (
-    <SlideWrapper className="bg-white" showFlare>
+    <SlideWrapper className="bg-white" showFlare showLogo={false}>
+      <motion.img
+        initial={{ opacity: 0, x: 80 }}
+        animate={{ opacity: 0.1, x: 0 }}
+        transition={{ duration: 1.6, ease: 'easeOut', delay: 0.3 }}
+        src="/images/logobranca.webp"
+        alt=""
+        className="absolute right-[-10vmin] h-[85%] object-contain pointer-events-none select-none opacity-10"
+      />
       <div className="relative z-10 container mx-auto px-[5vmin] text-center h-full flex flex-col justify-center items-center">
         <TextReveal delay={0.1}>
           <div className="w-1 h-20 bg-brand-red mx-auto mb-8" />

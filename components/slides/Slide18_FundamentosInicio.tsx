@@ -6,7 +6,7 @@ const etapas = ['Lavagem', 'Descontaminação', 'Separação correta dos materia
 
 export const Slide18_FundamentosInicio: React.FC = () => {
   return (
-    <SlideWrapper className="bg-white text-black" showFlare>
+    <SlideWrapper className="bg-white text-black" showFlare showLogo>
       <div className="absolute top-[-8vmin] right-[-8vmin] w-[40vmin] h-[40vmin] rounded-full bg-brand-red/5 blur-3xl pointer-events-none" />
       <div className="absolute bottom-[-4vmin] left-[-4vmin] w-[26vmin] h-[26vmin] rounded-full bg-gray-300/40 blur-2xl pointer-events-none" />
 

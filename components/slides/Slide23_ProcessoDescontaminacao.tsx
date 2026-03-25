@@ -13,7 +13,7 @@ const etapas = [
 
 export const Slide23_ProcessoDescontaminacao: React.FC = () => {
   return (
-    <SlideWrapper className="bg-white text-black" showFlare>
+    <SlideWrapper className="bg-white text-black" showFlare showLogo>
       <div className="absolute bottom-[-8vmin] right-[-6vmin] w-[44vmin] h-[44vmin] rounded-full bg-brand-red/5 blur-3xl pointer-events-none" />
       <div className="absolute top-[-4vmin] left-[-4vmin] w-[30vmin] h-[30vmin] rounded-full bg-gray-200/50 blur-2xl pointer-events-none" />
 

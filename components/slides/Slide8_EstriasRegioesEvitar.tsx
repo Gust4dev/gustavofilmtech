@@ -6,7 +6,7 @@ const regioes = ['Retrovisores', 'Colunas', 'Para-choques'];
 
 export const Slide8_EstriasRegioesEvitar: React.FC = () => {
   return (
-    <SlideWrapper className="bg-white text-black" showFlare>
+    <SlideWrapper className="bg-white text-black" showFlare showLogo>
       <div className="absolute top-[-6vmin] left-[-6vmin] w-[36vmin] h-[36vmin] rounded-full bg-brand-red/5 blur-3xl pointer-events-none" />
       <div className="absolute bottom-[-6vmin] right-[-6vmin] w-[30vmin] h-[30vmin] rounded-full bg-gray-200/60 blur-2xl pointer-events-none" />
 

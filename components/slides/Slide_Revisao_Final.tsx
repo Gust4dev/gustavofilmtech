@@ -5,7 +5,7 @@ import { Star } from 'lucide-react';
 
 export const Slide_Revisao_Final: React.FC = () => {
   return (
-    <SlideWrapper className="bg-white text-gray-900 overflow-hidden" showFlare>
+    <SlideWrapper className="bg-white text-black overflow-hidden" showFlare showLogo>
       <motion.div 
         animate={{ 
           scale: [1, 1.05, 1],

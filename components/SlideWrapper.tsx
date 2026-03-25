@@ -5,12 +5,16 @@ interface SlideWrapperProps {
   children: ReactNode;
   className?: string;
   showFlare?: boolean;
+  showLogo?: boolean;
+  logoSize?: string; // e.g., "8vmin"
 }
 
 export const SlideWrapper: React.FC<SlideWrapperProps> = ({ 
   children, 
   className = "",
-  showFlare = false
+  showFlare = false,
+  showLogo = false,
+  logoSize = "15vmin" // Increased default size
 }) => {
   return (
     <motion.div
@@ -20,6 +24,22 @@ export const SlideWrapper: React.FC<SlideWrapperProps> = ({
       transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }} // Custom bezier for premium feel
       className={`absolute inset-0 w-full h-full flex flex-col items-center justify-center overflow-hidden ${className}`}
     >
+      {showLogo && (
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.5, duration: 0.8 }}
+          className="absolute bottom-[4vmin] right-[4vmin] z-0 pointer-events-none select-none"
+        >
+          <img 
+            src="/images/logobranca.webp" 
+            alt="FilmTech Educação" 
+            style={{ height: logoSize }}
+            className="w-auto object-contain"
+          />
+        </motion.div>
+      )}
+
       {showFlare && (
         <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none select-none">
           {/* Top Right Flare */}
@@ -39,6 +59,7 @@ export const SlideWrapper: React.FC<SlideWrapperProps> = ({
           />
         </div>
       )}
+
       <div className="relative z-10 w-full h-full flex flex-col items-center justify-center">
         {children}
       </div>

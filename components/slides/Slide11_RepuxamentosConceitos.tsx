@@ -14,7 +14,7 @@ const conceitos = [
 
 export const Slide11_RepuxamentosConceitos: React.FC = () => {
   return (
-    <SlideWrapper className="bg-gradient-to-br from-white via-gray-50 to-gray-100 text-black">
+    <SlideWrapper className="bg-white text-black" showFlare showLogo>
       <div className="absolute bottom-[-8vmin] right-[-6vmin] w-[44vmin] h-[44vmin] rounded-full bg-brand-red/5 blur-3xl pointer-events-none" />
       <div className="absolute top-[-4vmin] left-[-4vmin] w-[28vmin] h-[28vmin] rounded-full bg-gray-200/50 blur-2xl pointer-events-none" />
 

@@ -4,7 +4,7 @@ import { SlideWrapper, TextReveal } from '../SlideWrapper';
 
 export const Slide12_RepuxamentosVerdade: React.FC = () => {
   return (
-    <SlideWrapper className="bg-white text-gray-900" showFlare>
+    <SlideWrapper className="bg-white text-black" showFlare showLogo>
       <div className="absolute top-[-6vmin] left-[-6vmin] w-[44vmin] h-[44vmin] rounded-full bg-brand-red/5 blur-3xl pointer-events-none" />
 
       {/* Logo watermark */}

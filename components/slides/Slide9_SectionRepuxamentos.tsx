@@ -5,16 +5,16 @@ import { SlideProps } from '../../types';
 
 export const Slide9_SectionRepuxamentos: React.FC<SlideProps> = ({ sectionNumber }) => {
   return (
-    <SlideWrapper className="bg-white" showFlare>
+    <SlideWrapper className="bg-white" showFlare showLogo={false}>
       <div className="absolute top-[-6vmin] left-[-6vmin] w-[48vmin] h-[48vmin] rounded-full bg-brand-red/5 blur-3xl pointer-events-none" />
 
       <motion.img
         initial={{ opacity: 0, x: 80 }}
-        animate={{ opacity: 0.05, x: 0 }}
+        animate={{ opacity: 0.1, x: 0 }}
         transition={{ duration: 1.6, ease: 'easeOut', delay: 0.3 }}
-        src="/images/logoname.webp"
+        src="/images/logobranca.webp"
         alt=""
-        className="absolute right-0 h-[85%] object-contain pointer-events-none select-none"
+        className="absolute right-[-10vmin] h-[85%] object-contain pointer-events-none select-none"
       />
 
       <div className="relative z-10 container mx-auto px-[5vmin] text-center">

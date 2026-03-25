@@ -26,7 +26,7 @@ const DELIVERABLES = [
 
 export const Slide11_Deal: React.FC = () => {
   return (
-    <SlideWrapper className="bg-white text-gray-900 overflow-hidden flex flex-col justify-center" showFlare>
+    <SlideWrapper className="bg-white text-gray-900 overflow-hidden flex flex-col justify-center" showFlare showLogo>
       <div className="max-w-6xl mx-auto w-full px-6 flex flex-col md:flex-row gap-12 items-center">
         
         {/* Lado Esquerdo: A Promessa */}
