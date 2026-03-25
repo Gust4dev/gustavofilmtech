@@ -40,43 +40,158 @@ const Slide5_Asset = lazy(() =>
     default: module.Slide5_Asset,
   })),
 );
-const Slide6_Gap = lazy(() =>
-  import("./components/slides/Slide6_Gap").then((module) => ({
-    default: module.Slide6_Gap,
+const Slide6_SectionEstrias = lazy(() =>
+  import("./components/slides/Slide6_SectionEstrias").then((module) => ({
+    default: module.Slide6_SectionEstrias,
   })),
 );
-const Slide7_TeamStructure = lazy(() =>
-  import("./components/slides/Slide7_TeamStructure").then((module) => ({
-    default: module.Slide7_TeamStructure,
+const Slide7_EstriasCausa = lazy(() =>
+  import("./components/slides/Slide7_EstriasCausa").then((module) => ({
+    default: module.Slide7_EstriasCausa,
   })),
 );
-const Slide8_Methodology = lazy(() =>
-  import("./components/slides/Slide8_Final").then((module) => ({
-    default: module.Slide8_Final,
+const Slide8_EstriasRegioesEvitar = lazy(() =>
+  import("./components/slides/Slide8_EstriasRegioesEvitar").then((module) => ({
+    default: module.Slide8_EstriasRegioesEvitar,
   })),
 );
-const Slide9_TractionStrategy = lazy(() =>
-  import("./components/slides/Slide9_TractionStrategy").then((module) => ({
-    default: module.Slide9_TractionStrategy,
+const Slide9_SectionRepuxamentos = lazy(() =>
+  import("./components/slides/Slide9_SectionRepuxamentos").then((module) => ({
+    default: module.Slide9_SectionRepuxamentos,
   })),
 );
-const Slide10_FinancialPath = lazy(() =>
-  import("./components/slides/Slide10_FinancialPath").then((module) => ({
-    default: module.Slide10_FinancialPath,
+const Slide10_RepuxamentosCausa = lazy(() =>
+  import("./components/slides/Slide10_RepuxamentosCausa").then((module) => ({
+    default: module.Slide10_RepuxamentosCausa,
   })),
 );
-const Slide11_Deal = lazy(() =>
-  import("./components/slides/Slide11_Deal").then((module) => ({
-    default: module.Slide11_Deal,
+const Slide11_RepuxamentosConceitos = lazy(() =>
+  import("./components/slides/Slide11_RepuxamentosConceitos").then((module) => ({
+    default: module.Slide11_RepuxamentosConceitos,
   })),
 );
-const Slide12_Final = lazy(() =>
-  import("./components/slides/Slide12_Final").then((module) => ({
-    default: module.Slide12_Final,
+const Slide12_RepuxamentosVerdade = lazy(() =>
+  import("./components/slides/Slide12_RepuxamentosVerdade").then((module) => ({
+    default: module.Slide12_RepuxamentosVerdade,
+  })),
+);
+const Slide13_SectionMarcas = lazy(() =>
+  import("./components/slides/Slide13_SectionMarcas").then((module) => ({
+    default: module.Slide13_SectionMarcas,
+  })),
+);
+const Slide14_MarcasOrigem = lazy(() =>
+  import("./components/slides/Slide14_MarcasOrigem").then((module) => ({
+    default: module.Slide14_MarcasOrigem,
+  })),
+);
+const Slide15_MarcasPontos = lazy(() =>
+  import("./components/slides/Slide15_MarcasPontos").then((module) => ({
+    default: module.Slide15_MarcasPontos,
+  })),
+);
+const Slide16_MarcasConsequencias = lazy(() =>
+  import("./components/slides/Slide16_MarcasConsequencias").then((module) => ({
+    default: module.Slide16_MarcasConsequencias,
+  })),
+);
+const Slide17_SectionFundamentos = lazy(() =>
+  import("./components/slides/Slide17_SectionFundamentos").then((module) => ({
+    default: module.Slide17_SectionFundamentos,
+  })),
+);
+const Slide18_FundamentosInicio = lazy(() =>
+  import("./components/slides/Slide18_FundamentosInicio").then((module) => ({
+    default: module.Slide18_FundamentosInicio,
+  })),
+);
+const Slide19_FundamentosProcesso = lazy(() =>
+  import("./components/slides/Slide19_FundamentosProcesso").then((module) => ({
+    default: module.Slide19_FundamentosProcesso,
+  })),
+);
+const Slide20_SectionLimpeza = lazy(() =>
+  import("./components/slides/Slide20_SectionLimpeza").then((module) => ({
+    default: module.Slide20_SectionLimpeza,
+  })),
+);
+const Slide21_LavarVsDescontaminar = lazy(() =>
+  import("./components/slides/Slide21_LavarVsDescontaminar").then((module) => ({
+    default: module.Slide21_LavarVsDescontaminar,
+  })),
+);
+const Slide22_TiposContaminacao = lazy(() =>
+  import("./components/slides/Slide22_TiposContaminacao").then((module) => ({
+    default: module.Slide22_TiposContaminacao,
+  })),
+);
+const Slide23_ProcessoDescontaminacao = lazy(() =>
+  import("./components/slides/Slide23_ProcessoDescontaminacao").then((module) => ({
+    default: module.Slide23_ProcessoDescontaminacao,
+  })),
+);
+const Slide24_PontoProfissional = lazy(() =>
+  import("./components/slides/Slide24_PontoProfissional").then((module) => ({
+    default: module.Slide24_PontoProfissional,
+  })),
+);
+const Slide25_SectionMaterial = lazy(() =>
+  import("./components/slides/Slide25_SectionMaterial").then((module) => ({
+    default: module.Slide25_SectionMaterial,
+  })),
+);
+const Slide26_MaterialFuncao = lazy(() =>
+  import("./components/slides/Slide26_MaterialFuncao").then((module) => ({
+    default: module.Slide26_MaterialFuncao,
+  })),
+);
+const Slide27_MaterialEscolha = lazy(() =>
+  import("./components/slides/Slide27_MaterialEscolha").then((module) => ({
+    default: module.Slide27_MaterialEscolha,
+  })),
+);
+const Slide28_SectionPrecificacao = lazy(() =>
+  import("./components/slides/Slide28_SectionPrecificacao").then((module) => ({
+    default: module.Slide28_SectionPrecificacao,
+  })),
+);
+const Slide29_PrecificacaoErro = lazy(() =>
+  import("./components/slides/Slide29_PrecificacaoErro").then((module) => ({
+    default: module.Slide29_PrecificacaoErro,
+  })),
+);
+const Slide30_TempoCusto = lazy(() =>
+  import("./components/slides/Slide30_TempoCusto").then((module) => ({
+    default: module.Slide30_TempoCusto,
+  })),
+);
+const Slide31_PrecificacaoConclusao = lazy(() =>
+  import("./components/slides/Slide31_PrecificacaoConclusao").then((module) => ({
+    default: module.Slide31_PrecificacaoConclusao,
+  })),
+);
+const Slide32_SectionFerramentas = lazy(() =>
+  import("./components/slides/Slide32_SectionFerramentas").then((module) => ({
+    default: module.Slide32_SectionFerramentas,
+  })),
+);
+const Slide33_FerramentasMentalidade = lazy(() =>
+  import("./components/slides/Slide33_FerramentasMentalidade").then((module) => ({
+    default: module.Slide33_FerramentasMentalidade,
+  })),
+);
+const Slide34_FerramentasPPF = lazy(() =>
+  import("./components/slides/Slide34_FerramentasPPF").then((module) => ({
+    default: module.Slide34_FerramentasPPF,
+  })),
+);
+const Slide35_FerramentasConclusao = lazy(() =>
+  import("./components/slides/Slide35_FerramentasConclusao").then((module) => ({
+    default: module.Slide35_FerramentasConclusao,
   })),
 );
 
-const SLIDES_COUNT = 12;
+const SLIDES_COUNT = 35;
 
 // Map for preloading
 const CHECKPOINT_MODULES = [
@@ -85,13 +200,36 @@ const CHECKPOINT_MODULES = [
   () => import("./components/slides/Slide3_Struggle"),
   () => import("./components/slides/Slide4_Turn"),
   () => import("./components/slides/Slide5_Asset"),
-  () => import("./components/slides/Slide6_Gap"),
-  () => import("./components/slides/Slide7_TeamStructure"),
-  () => import("./components/slides/Slide8_Final"),
-  () => import("./components/slides/Slide9_TractionStrategy"),
-  () => import("./components/slides/Slide10_FinancialPath"),
-  () => import("./components/slides/Slide11_Deal"),
-  () => import("./components/slides/Slide12_Final"),
+  () => import("./components/slides/Slide6_SectionEstrias"),
+  () => import("./components/slides/Slide7_EstriasCausa"),
+  () => import("./components/slides/Slide8_EstriasRegioesEvitar"),
+  () => import("./components/slides/Slide9_SectionRepuxamentos"),
+  () => import("./components/slides/Slide10_RepuxamentosCausa"),
+  () => import("./components/slides/Slide11_RepuxamentosConceitos"),
+  () => import("./components/slides/Slide12_RepuxamentosVerdade"),
+  () => import("./components/slides/Slide13_SectionMarcas"),
+  () => import("./components/slides/Slide14_MarcasOrigem"),
+  () => import("./components/slides/Slide15_MarcasPontos"),
+  () => import("./components/slides/Slide16_MarcasConsequencias"),
+  () => import("./components/slides/Slide17_SectionFundamentos"),
+  () => import("./components/slides/Slide18_FundamentosInicio"),
+  () => import("./components/slides/Slide19_FundamentosProcesso"),
+  () => import("./components/slides/Slide20_SectionLimpeza"),
+  () => import("./components/slides/Slide21_LavarVsDescontaminar"),
+  () => import("./components/slides/Slide22_TiposContaminacao"),
+  () => import("./components/slides/Slide23_ProcessoDescontaminacao"),
+  () => import("./components/slides/Slide24_PontoProfissional"),
+  () => import("./components/slides/Slide25_SectionMaterial"),
+  () => import("./components/slides/Slide26_MaterialFuncao"),
+  () => import("./components/slides/Slide27_MaterialEscolha"),
+  () => import("./components/slides/Slide28_SectionPrecificacao"),
+  () => import("./components/slides/Slide29_PrecificacaoErro"),
+  () => import("./components/slides/Slide30_TempoCusto"),
+  () => import("./components/slides/Slide31_PrecificacaoConclusao"),
+  () => import("./components/slides/Slide32_SectionFerramentas"),
+  () => import("./components/slides/Slide33_FerramentasMentalidade"),
+  () => import("./components/slides/Slide34_FerramentasPPF"),
+  () => import("./components/slides/Slide35_FerramentasConclusao"),
 ];
 
 const App: React.FC = () => {
@@ -263,19 +401,65 @@ const App: React.FC = () => {
       case 4:
         return <Slide5_Asset key="slide5" />;
       case 5:
-        return <Slide6_Gap key="slide6" />;
+        return <Slide6_SectionEstrias key="slide6" />;
       case 6:
-        return <Slide7_TeamStructure key="slide7" />;
+        return <Slide7_EstriasCausa key="slide7" />;
       case 7:
-        return <Slide8_Methodology key="slide8" />;
+        return <Slide8_EstriasRegioesEvitar key="slide8" />;
       case 8:
-        return <Slide9_TractionStrategy key="slide9" />;
+        return <Slide9_SectionRepuxamentos key="slide9" />;
       case 9:
-        return <Slide10_FinancialPath key="slide10" />;
+        return <Slide10_RepuxamentosCausa key="slide10" />;
       case 10:
-        return <Slide11_Deal key="slide11" />;
+        return <Slide11_RepuxamentosConceitos key="slide11" />;
       case 11:
-        return <Slide12_Final key="slide12" />;
+        return <Slide12_RepuxamentosVerdade key="slide12" />;
+      case 12:
+        return <Slide13_SectionMarcas key="slide13" />;
+      case 13:
+        return <Slide14_MarcasOrigem key="slide14" />;
+      case 14:
+        return <Slide15_MarcasPontos key="slide15" />;
+      case 15:
+        return <Slide16_MarcasConsequencias key="slide16" />;
+      case 16:
+        return <Slide17_SectionFundamentos key="slide17" />;
+      case 17:
+        return <Slide18_FundamentosInicio key="slide18" />;
+      case 18:
+        return <Slide19_FundamentosProcesso key="slide19" />;
+      case 19:
+        return <Slide20_SectionLimpeza key="slide20" />;
+      case 20:
+        return <Slide21_LavarVsDescontaminar key="slide21" />;
+      case 21:
+        return <Slide22_TiposContaminacao key="slide22" />;
+      case 22:
+        return <Slide23_ProcessoDescontaminacao key="slide23" />;
+      case 23:
+        return <Slide24_PontoProfissional key="slide24" />;
+      case 24:
+        return <Slide25_SectionMaterial key="slide25" />;
+      case 25:
+        return <Slide26_MaterialFuncao key="slide26" />;
+      case 26:
+        return <Slide27_MaterialEscolha key="slide27" />;
+      case 27:
+        return <Slide28_SectionPrecificacao key="slide28" />;
+      case 28:
+        return <Slide29_PrecificacaoErro key="slide29" />;
+      case 29:
+        return <Slide30_TempoCusto key="slide30" />;
+      case 30:
+        return <Slide31_PrecificacaoConclusao key="slide31" />;
+      case 31:
+        return <Slide32_SectionFerramentas key="slide32" />;
+      case 32:
+        return <Slide33_FerramentasMentalidade key="slide33" />;
+      case 33:
+        return <Slide34_FerramentasPPF key="slide34" />;
+      case 34:
+        return <Slide35_FerramentasConclusao key="slide35" />;
       default:
         return null;
     }

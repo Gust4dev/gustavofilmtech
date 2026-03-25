@@ -30,7 +30,7 @@ export const Slide8_Methodology: React.FC = () => {
   };
 
   return (
-    <SlideWrapper className="bg-white overflow-hidden flex flex-col items-center justify-center">
+    <SlideWrapper className="bg-white overflow-hidden flex flex-col items-center justify-center" showFlare>
       {/* Título */}
       <motion.div 
         initial={{ opacity: 0, y: -20 }}

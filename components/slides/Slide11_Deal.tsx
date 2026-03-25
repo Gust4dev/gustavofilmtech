@@ -26,7 +26,7 @@ const DELIVERABLES = [
 
 export const Slide11_Deal: React.FC = () => {
   return (
-    <SlideWrapper className="bg-gray-900 text-white overflow-hidden flex flex-col justify-center">
+    <SlideWrapper className="bg-white text-gray-900 overflow-hidden flex flex-col justify-center" showFlare>
       <div className="max-w-6xl mx-auto w-full px-6 flex flex-col md:flex-row gap-12 items-center">
         
         {/* Lado Esquerdo: A Promessa */}
@@ -42,26 +42,26 @@ export const Slide11_Deal: React.FC = () => {
                 Parceria
               </span>
             </h2>
-            <p className="text-gray-400 text-lg leading-relaxed mb-8 border-l-4 border-brand-red pl-6">
+            <p className="text-gray-500 text-lg leading-relaxed mb-8 border-l-4 border-brand-red pl-6">
               Não somos uma agência que entrega posts. Somos um braço estratégico de crescimento dentro da sua operação.
             </p>
             
             {/* Box de Destaque - O Deal */}
-            <div className="bg-white/5 border border-white/10 rounded-2xl p-6 backdrop-blur-sm">
-                <h3 className="text-white font-bold text-xl mb-2 flex items-center gap-2">
+            <div className="bg-gray-50 border border-gray-100 rounded-2xl p-6 shadow-sm">
+                <h3 className="text-gray-900 font-bold text-xl mb-2 flex items-center gap-2">
                     <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse"/>
                     Formato de Atuação
                 </h3>
                 <ul className="space-y-3">
-                    <li className="flex items-center gap-3 text-gray-300">
+                    <li className="flex items-center gap-3 text-gray-700">
                         <Check className="text-brand-red" size={20} />
                         <span>Fee Mensal (Gestão & Tecnologia)</span>
                     </li>
-                    <li className="flex items-center gap-3 text-gray-300">
+                    <li className="flex items-center gap-3 text-gray-700">
                         <Check className="text-brand-red" size={20} />
                         <span>Success Fee (Variável sobre Crescimento)</span>
                     </li>
-                    <li className="flex items-center gap-3 text-gray-300">
+                    <li className="flex items-center gap-3 text-gray-700">
                         <Check className="text-brand-red" size={20} />
                         <span>Exclusividade de Área (Sob consulta)</span>
                     </li>

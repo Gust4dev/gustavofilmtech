@@ -5,7 +5,7 @@ import { GraduationCap, TrendingUp, CheckCircle2, AlertCircle } from 'lucide-rea
 
 export const Slide9_AcademyIntro: React.FC = () => {
   return (
-    <SlideWrapper className="bg-white overflow-hidden">
+    <SlideWrapper className="bg-white overflow-hidden" showFlare>
       
       {/* Background Marca D'água */}
       <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-0 overflow-hidden">

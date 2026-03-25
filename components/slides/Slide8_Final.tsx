@@ -32,7 +32,7 @@ export const Slide8_Final: React.FC = () => {
   };
 
   return (
-    <SlideWrapper className="bg-white overflow-hidden flex flex-col items-center justify-center">
+    <SlideWrapper className="bg-white overflow-hidden flex flex-col items-center justify-center" showFlare>
       {/* Container Principal que usa vmin para tudo */}
       <div className="relative w-full h-full flex flex-col items-center justify-center">
         
