@@ -4,14 +4,15 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Users, Star } from 'lucide-react';
 
 const IMAGES = [
-  '/images/academy.jpeg',
-  '/images/academy1.jpeg',
-  '/images/academy2.jpeg',
-  '/images/academy3.jpeg',
-  '/images/academy4.jpeg',
+  '/images/academy.webp',
+  '/images/academy1.webp',
+  '/images/academy2.webp',
+  '/images/academy3.webp',
+  '/images/academy4.webp',
 ];
+import { SlideProps } from '../../types';
 
-export const Slide9a_Students: React.FC = () => {
+export const Slide9a_Students: React.FC<SlideProps> = () => {
     const [currentImage, setCurrentImage] = useState(0);
 
     // Carousel Timer (2 seconds)

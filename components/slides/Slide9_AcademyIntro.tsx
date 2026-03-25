@@ -10,7 +10,7 @@ export const Slide9_AcademyIntro: React.FC = () => {
       {/* Background Marca D'água */}
       <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-0 overflow-hidden">
          <img 
-            src="/images/logobranca.png" 
+            src="/images/logobranca.webp" 
             alt="Academy Logo" 
             className="w-[70%] max-w-none opacity-10 blur-sm scale-150 filter invert grayscale"
          />
@@ -84,7 +84,7 @@ export const Slide9_AcademyIntro: React.FC = () => {
                             <h3 className="text-2xl font-bold text-white flex items-center gap-3">
                                 <div className="bg-white rounded px-3 py-1.5 h-12 flex items-center justify-center shadow-sm">
                                     <img 
-                                        src="/images/logouniauto.png" 
+                                        src="/images/logouniauto.webp" 
                                         alt="Uni Auto" 
                                         className="h-full w-auto object-contain" 
                                     />

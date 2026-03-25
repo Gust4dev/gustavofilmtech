@@ -1,17 +1,18 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { SlideWrapper, TextReveal } from '../SlideWrapper';
+import { SlideProps } from '../../types';
 
-export const Slide20_SectionLimpeza: React.FC = () => {
+export const Slide20_SectionLimpeza: React.FC<SlideProps> = ({ sectionNumber }) => {
   return (
     <SlideWrapper className="bg-white" showFlare>
-      <div className="absolute bottom-[-8vmin] left-[-4vmin] w-[50vmin] h-[50vmin] rounded-full bg-brand-red/5 blur-3xl pointer-events-none" />
+      <div className="absolute top-[-6vmin] left-[-6vmin] w-[48vmin] h-[48vmin] rounded-full bg-brand-red/5 blur-3xl pointer-events-none" />
 
       <motion.img
         initial={{ opacity: 0, x: 80 }}
         animate={{ opacity: 0.05, x: 0 }}
         transition={{ duration: 1.6, ease: 'easeOut', delay: 0.3 }}
-        src="/images/logoname.png"
+        src="/images/logoname.webp"
         alt=""
         className="absolute right-0 h-[85%] object-contain pointer-events-none select-none"
       />
@@ -22,16 +23,16 @@ export const Slide20_SectionLimpeza: React.FC = () => {
             className="text-brand-red font-bold uppercase tracking-widest"
             style={{ fontSize: 'clamp(10px, 1.5vmin, 16px)' }}
           >
-            Seção 05
+            Seção {String(sectionNumber || 0).padStart(2, '0')}
           </span>
         </TextReveal>
 
         <TextReveal delay={0.25}>
           <h2
             className="font-display font-black text-gray-900 mt-[2vmin] leading-none"
-            style={{ fontSize: 'clamp(30px, 7.5vmin, 95px)' }}
+            style={{ fontSize: 'clamp(36px, 9vmin, 110px)' }}
           >
-            Limpeza e<br />Descontaminação
+            Limpeza e<br />Preparação
           </h2>
         </TextReveal>
 

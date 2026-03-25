@@ -1,6 +1,7 @@
 export interface SlideProps {
   isActive: boolean;
   direction: number;
+  sectionNumber?: number;
 }
 
 export interface NavigationProps {

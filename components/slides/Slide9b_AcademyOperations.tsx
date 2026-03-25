@@ -20,7 +20,7 @@ export const Slide9b_AcademyOperations: React.FC = () => {
       
       {/* 1. LOGO FILMTECH EDUCATION (Mais destacada) */}
       <div className="absolute top-8 right-8 w-[250px] md:w-[400px] opacity-40 pointer-events-none">
-         <img src="/images/logobranca.png" alt="FilmTech Education" />
+         <img src="/images/logobranca.webp" alt="FilmTech Education" />
       </div>
 
       <div className="w-full h-full flex flex-col justify-center px-4 md:px-8 relative z-10 py-4">
@@ -49,7 +49,7 @@ export const Slide9b_AcademyOperations: React.FC = () => {
             <OperationCard 
                 title="Gustavo"
                 role="Atração & Autoridade"
-                image="/images/gustavo.png"
+                image="/images/gustavo.webp"
                 imgSettings={IMG_SETTINGS.gustavo}
                 color="amber"
                 icon={Zap}
@@ -61,7 +61,7 @@ export const Slide9b_AcademyOperations: React.FC = () => {
             <OperationCard 
                 title="Uni Auto"
                 role="Máquina de Vendas"
-                image="/images/Rodrigo.jpeg" 
+                image="/images/Rodrigo.webp" 
                 imgSettings={IMG_SETTINGS.rodrigo}
                 color="emerald"
                 icon={Users}
@@ -74,7 +74,7 @@ export const Slide9b_AcademyOperations: React.FC = () => {
             <OperationCard 
                 title="Gestão"
                 role="Rodrigo & Wallisson"
-                image="/images/Wallisson.jpg"
+                image="/images/Wallisson.webp"
                 imgSettings={IMG_SETTINGS.wallisson}
                 color="slate"
                 icon={Shield}

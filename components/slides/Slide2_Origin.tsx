@@ -12,7 +12,7 @@ export const Slide2_Origin: React.FC = () => {
           <div className="absolute inset-0 bg-brand-red/10 mix-blend-overlay z-10" />
           <div className="absolute inset-0 bg-black/40 z-10" />
           <SmoothImage 
-            src="/images/imagem2.jpeg" 
+            src="/images/imagem2.webp" 
             alt="Tomé-Açu 2011"
             className="w-full h-full object-cover transition-transform duration-[2s] scale-100 group-hover:scale-110"
           />

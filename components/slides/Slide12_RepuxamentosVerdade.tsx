@@ -12,7 +12,7 @@ export const Slide12_RepuxamentosVerdade: React.FC = () => {
         initial={{ opacity: 0, x: 80 }}
         animate={{ opacity: 0.04, x: 0 }}
         transition={{ duration: 1.6, ease: 'easeOut', delay: 0.3 }}
-        src="/images/logoname.png"
+        src="/images/logoname.webp"
         alt=""
         className="absolute right-0 h-[80%] object-contain pointer-events-none select-none"
       />

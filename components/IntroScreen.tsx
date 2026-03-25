@@ -58,7 +58,7 @@ export const IntroScreen: React.FC<IntroScreenProps> = ({ onStart }) => {
           <div className="absolute inset-0 bg-brand-red/30 blur-3xl rounded-full animate-pulse" />
           
           <SmoothImage
-            src="/images/logoF.png"
+            src="/images/logoF.webp"
             alt="FilmTech Logo"
             className="w-32 md:w-48 h-auto relative z-10 drop-shadow-2xl"
           />

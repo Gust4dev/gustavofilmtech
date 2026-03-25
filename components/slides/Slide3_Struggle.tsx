@@ -74,7 +74,7 @@ export const Slide3_Struggle: React.FC = () => {
               <div className="absolute bottom-0 left-0 w-[10vmin] h-[10vmin] border-b-4 border-l-4 border-black/10 z-0" />
               
               <SmoothImage 
-                src="/images/imagem3.jpeg" 
+                src="/images/imagem3.webp" 
                 alt="Early Days Workshop" 
                 className={`w-full h-full object-cover transition-all duration-1000 relative z-10 shadow-2xl ${isGrayscale ? 'grayscale contrast-125' : 'grayscale-0'}`}
               />

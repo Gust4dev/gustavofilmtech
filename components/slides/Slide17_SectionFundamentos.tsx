@@ -1,8 +1,9 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { SlideWrapper, TextReveal } from '../SlideWrapper';
+import { SlideProps } from '../../types';
 
-export const Slide17_SectionFundamentos: React.FC = () => {
+export const Slide17_SectionFundamentos: React.FC<SlideProps> = ({ sectionNumber }) => {
   return (
     <SlideWrapper className="bg-white" showFlare>
       <div className="absolute top-[-6vmin] left-[-6vmin] w-[48vmin] h-[48vmin] rounded-full bg-brand-red/5 blur-3xl pointer-events-none" />
@@ -11,7 +12,7 @@ export const Slide17_SectionFundamentos: React.FC = () => {
         initial={{ opacity: 0, x: 80 }}
         animate={{ opacity: 0.05, x: 0 }}
         transition={{ duration: 1.6, ease: 'easeOut', delay: 0.3 }}
-        src="/images/logoname.png"
+        src="/images/logoname.webp"
         alt=""
         className="absolute right-0 h-[85%] object-contain pointer-events-none select-none"
       />
@@ -22,7 +23,7 @@ export const Slide17_SectionFundamentos: React.FC = () => {
             className="text-brand-red font-bold uppercase tracking-widest"
             style={{ fontSize: 'clamp(10px, 1.5vmin, 16px)' }}
           >
-            Seção 04
+            Seção {String(sectionNumber || 0).padStart(2, '0')}
           </span>
         </TextReveal>
 

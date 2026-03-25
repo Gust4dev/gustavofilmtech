@@ -60,7 +60,7 @@ export const Slide5_Asset: React.FC = () => {
              initial={{ opacity: 0, x: 100 }}
              animate={{ opacity: 0.02, x: 32 }}
              transition={{ duration: 1.5, ease: "easeOut" }}
-             src="/images/logoname.png" 
+             src="/images/logoname.webp" 
              alt="" 
              className="absolute right-[-40px] blur-md scale-90 translate-y-4 h-[100%] object-contain" 
            />
@@ -69,7 +69,7 @@ export const Slide5_Asset: React.FC = () => {
              initial={{ opacity: 0, x: 100 }}
              animate={{ opacity: 0.05, x: 0 }}
              transition={{ duration: 1.5, ease: "easeOut", delay: 0.2 }}
-             src="/images/logoname.png" 
+             src="/images/logoname.webp" 
              alt="Detail" 
              className="relative h-[90%] object-contain ml-20" 
            />

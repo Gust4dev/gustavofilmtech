@@ -1,19 +1,18 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { SlideWrapper, TextReveal } from '../SlideWrapper';
+import { SlideProps } from '../../types';
 
-export const Slide6_SectionEstrias: React.FC = () => {
+export const Slide6_SectionEstrias: React.FC<SlideProps> = ({ sectionNumber }) => {
   return (
     <SlideWrapper className="bg-white" showFlare>
-      {/* Decorative blur accent - kept for extra flare */}
-      <div className="absolute bottom-[-8vmin] left-[-8vmin] w-[50vmin] h-[50vmin] rounded-full bg-brand-red/5 blur-3xl pointer-events-none" />
+      <div className="absolute top-[-6vmin] left-[-6vmin] w-[48vmin] h-[48vmin] rounded-full bg-brand-red/5 blur-3xl pointer-events-none" />
 
-      {/* Logo watermark */}
       <motion.img
         initial={{ opacity: 0, x: 80 }}
         animate={{ opacity: 0.05, x: 0 }}
         transition={{ duration: 1.6, ease: 'easeOut', delay: 0.3 }}
-        src="/images/logoname.png"
+        src="/images/logoname.webp"
         alt=""
         className="absolute right-0 h-[85%] object-contain pointer-events-none select-none"
       />
@@ -24,7 +23,7 @@ export const Slide6_SectionEstrias: React.FC = () => {
             className="text-brand-red font-bold uppercase tracking-widest"
             style={{ fontSize: 'clamp(10px, 1.5vmin, 16px)' }}
           >
-            Seção 01
+            Seção {String(sectionNumber || 0).padStart(2, '0')}
           </span>
         </TextReveal>
 
@@ -33,7 +32,7 @@ export const Slide6_SectionEstrias: React.FC = () => {
             className="font-display font-black text-gray-900 mt-[2vmin] leading-none"
             style={{ fontSize: 'clamp(36px, 9vmin, 110px)' }}
           >
-            Estrias no PPF
+            Estrias e<br />Tensão
           </h2>
         </TextReveal>
 

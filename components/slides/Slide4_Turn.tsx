@@ -8,21 +8,21 @@ const TIMELINE_STEPS = [
   { 
     year: '2021', 
     title: 'O Início', 
-    image: '/images/2021.jpeg', 
+    image: '/images/2021.webp', 
     highlight: 'Nascemos em Goiânia',
     text: 'Já iniciamos acertados com o Marketing. A fundação foi sólida, focada em estabelecer uma presença visual impecável desde o dia zero.'
   },
   { 
     year: '2022', 
     title: 'Evolução', 
-    image: '/images/2022.jpeg', 
+    image: '/images/2022.webp', 
     highlight: 'O Cliente de Luxo',
     text: 'Atingimos o potencial cliente de alto padrão. Nossas estratégias validaram que a qualidade técnica atrai o público que valoriza detalhes.'
   },
   { 
     year: '2024', 
     title: 'Domínio', 
-    image: '/images/2024.jpeg', 
+    image: '/images/2024.webp', 
     highlight: 'Atração & Retenção',
     text: 'Consolidamos o mercado. Hoje não apenas atendemos, mas geramos desejo através de uma vitrine digital que reflete a excelência do serviço.'
   }

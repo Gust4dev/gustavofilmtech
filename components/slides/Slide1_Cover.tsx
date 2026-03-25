@@ -8,7 +8,7 @@ export const Slide1_Cover: React.FC = () => {
       {/* Background - Simulating Video Loop with High Res Image */}
       <div className="absolute inset-0 z-0 select-none pointer-events-none">
         <SmoothImage 
-          src="/images/imagem1.JPG" 
+          src="/images/imagem1.webp" 
           alt="Luxury Car" 
           className="w-full h-full object-cover opacity-60"
         />
