@@ -32,8 +32,13 @@ export const Slide30_TempoCusto: React.FC = () => {
             Quanto custa o seu dia?
           </h2>
         </TextReveal>
+        <TextReveal delay={0.25}>
+          <p className="text-gray-700 leading-relaxed mt-[2vmin] mb-[1vmin]" style={{ fontSize: 'clamp(13px, 1.9vmin, 22px)' }}>
+            Outro erro grave é ignorar o tempo. Pra alguns, R$10.000 é muito. Pra outros, não paga nem a operação. Uma empresa com estrutura, equipe e padrão elevado tem um custo que precisa ser respeitado. Se não, você trabalha… e no final só "troca figurinha".
+          </p>
+        </TextReveal>
 
-        <div className="mt-[3vmin] grid grid-cols-1 md:grid-cols-2 gap-[3vmin]">
+        <div className="mt-[2vmin] grid grid-cols-1 md:grid-cols-2 gap-[3vmin]">
           <div>
             <TextReveal delay={0.3}>
               <p className="text-gray-600 font-semibold mb-[1.5vmin]" style={{ fontSize: 'clamp(12px, 1.6vmin, 18px)' }}>

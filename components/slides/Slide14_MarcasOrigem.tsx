@@ -33,7 +33,7 @@ export const Slide14_MarcasOrigem: React.FC = () => {
           <div className="space-y-[2vmin]">
             <TextReveal delay={0.3}>
               <p className="text-gray-700 leading-relaxed" style={{ fontSize: 'clamp(13px, 1.9vmin, 22px)' }}>
-                As marcas na aplicação normalmente estão ligadas ao{' '}
+                As marcas na aplicação, como estrias, manchas internas e deslizamentos, normalmente estão ligadas ao{' '}
                 <span className="font-semibold text-gray-900">processo de lubrificação</span>, ao comportamento da
                 cola e à forma como o material é conduzido durante a instalação.
               </p>

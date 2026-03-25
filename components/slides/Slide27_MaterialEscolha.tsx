@@ -67,6 +67,9 @@ export const Slide27_MaterialEscolha: React.FC = () => {
                   </span>
                 ))}
               </div>
+              <p className="text-gray-500 text-center mt-[2vmin]" style={{ fontSize: 'clamp(12px, 1.6vmin, 19px)' }}>
+                Porque só assim você garante: tempo para executar bem, agilidade no processo e lucro no final.
+              </p>
             </div>
           </TextReveal>
         </div>

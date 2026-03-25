@@ -31,6 +31,12 @@ export const Slide21_LavarVsDescontaminar: React.FC = () => {
 
         <div className="mt-[3vmin] grid grid-cols-1 md:grid-cols-2 gap-[3vmin]">
           <div className="space-y-[2vmin]">
+            <TextReveal delay={0.25}>
+              <p className="text-gray-700 leading-relaxed" style={{ fontSize: 'clamp(13px, 1.8vmin, 21px)' }}>
+                Hoje, processos de descontaminação são indispensáveis para uma aplicação de alto nível.
+              </p>
+            </TextReveal>
+
             <TextReveal delay={0.3}>
               <div className="p-[2vmin] bg-white border border-gray-100 rounded-xl shadow-sm">
                 <p className="font-bold text-gray-900 mb-[1vmin]" style={{ fontSize: 'clamp(13px, 1.9vmin, 22px)' }}>

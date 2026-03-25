@@ -34,8 +34,18 @@ export const Slide29_PrecificacaoErro: React.FC = () => {
             Preço não é material. É estratégia.
           </h2>
         </TextReveal>
+        <TextReveal delay={0.25}>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-[2vmin] mt-[2vmin] mb-[1vmin]">
+            <p className="text-gray-700 leading-relaxed" style={{ fontSize: 'clamp(13px, 1.9vmin, 22px)' }}>
+              Muitos acreditam que o valor de um serviço está ligado apenas ao material. E é exatamente aqui que a maioria trava e começa a patinar no mercado.
+            </p>
+            <p className="text-gray-700 leading-relaxed" style={{ fontSize: 'clamp(13px, 1.9vmin, 22px)' }}>
+              Saber precificar é o que determina onde você vai chegar. É o que separa quem vive apertado de quem constrói um negócio sólido.
+            </p>
+          </div>
+        </TextReveal>
 
-        <div className="mt-[3vmin] grid grid-cols-1 md:grid-cols-2 gap-[3vmin]">
+        <div className="mt-[2vmin] grid grid-cols-1 md:grid-cols-2 gap-[3vmin]">
           <div className="space-y-[2vmin]">
             <TextReveal delay={0.3}>
               <p className="text-gray-700 leading-relaxed" style={{ fontSize: 'clamp(13px, 1.9vmin, 22px)' }}>
