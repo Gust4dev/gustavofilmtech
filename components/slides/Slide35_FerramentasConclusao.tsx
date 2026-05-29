@@ -3,9 +3,12 @@ import { motion } from 'framer-motion';
 import { SlideWrapper, TextReveal } from '../SlideWrapper';
 
 const ferramentasEnv = [
-  { nome: 'Espátula com feltro', uso: 'Evita riscos e garante acabamento limpo' },
-  { nome: 'Soprador térmico', uso: 'Ativação do material e conformação nas curvas' },
-  { nome: 'Estilete 30°', uso: 'Precisão nos cortes e acabamento final' },
+  { nome: 'Soprador SGT', uso: 'Secagem rápida de bordas e aderência garantida' },
+  { nome: 'Cortador de Liner', uso: 'Moldagem e corte sem risco para a pintura' },
+  { nome: 'Estilete Olfa 30°', uso: 'Precisão nos cortes e acabamento final' },
+  { nome: 'Espátula com Feltro', uso: 'Acabamento limpo, sem marcas' },
+  { nome: 'Solução de Aplicação', uso: 'Posicionamento e deslizamento do PPF' },
+  { nome: 'Solução de Secagem (Tack)', uso: 'Ativação da aderência nas bordas e cantos' },
 ];
 
 const evolucao = ['Técnica', 'Mentalidade', 'Ferramentas'];
@@ -49,7 +52,7 @@ export const Slide35_FerramentasConclusao: React.FC = () => {
           <div>
             <TextReveal delay={0.3}>
               <p className="text-gray-600 font-semibold mb-[1.5vmin]" style={{ fontSize: 'clamp(12px, 1.6vmin, 18px)' }}>
-                No envelopamento:
+                Kit completo do instalador PPF:
               </p>
             </TextReveal>
             <div className="space-y-[1.5vmin]">
@@ -98,7 +101,8 @@ export const Slide35_FerramentasConclusao: React.FC = () => {
             <TextReveal delay={0.85}>
               <div className="border-l-[0.4vmin] border-brand-red pl-[2.5vmin]">
                 <p className="font-bold text-gray-900" style={{ fontSize: 'clamp(13px, 2vmin, 24px)' }}>
-                  O nível do seu material acompanha o nível do seu resultado.
+                  Ferramenta certa + técnica certa + solução certa.<br />
+                  Esse é o padrão de quem quer ser referência.
                 </p>
               </div>
             </TextReveal>

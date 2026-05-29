@@ -31,7 +31,9 @@ export const SLIDES_LIST: SlideConfig[] = [
   { id: 'lavar-vs-descontaminar', component: lazy(() => import('../components/slides/Slide21_LavarVsDescontaminar').then(m => ({ default: m.Slide21_LavarVsDescontaminar }))) },
   { id: 'tipos-contaminacao', component: lazy(() => import('../components/slides/Slide22_TiposContaminacao').then(m => ({ default: m.Slide22_TiposContaminacao }))) },
   { id: 'processo-descontaminacao', component: lazy(() => import('../components/slides/Slide23_ProcessoDescontaminacao').then(m => ({ default: m.Slide23_ProcessoDescontaminacao }))) },
+  { id: 'iron-x', component: lazy(() => import('../components/slides/Slide23b_IronX').then(m => ({ default: m.Slide23b_IronX }))) },
   { id: 'ponto-profissional', component: lazy(() => import('../components/slides/Slide24_PontoProfissional').then(m => ({ default: m.Slide24_PontoProfissional }))) },
+  { id: 'remocao-cola', component: lazy(() => import('../components/slides/Slide24b_RemocaoCola').then(m => ({ default: m.Slide24b_RemocaoCola }))) },
   
   // S03: Material
   { id: 'material-section', component: lazy(() => import('../components/slides/Slide25_SectionMaterial').then(m => ({ default: m.Slide25_SectionMaterial }))), isSection: true },
@@ -75,6 +77,13 @@ export const SLIDES_LIST: SlideConfig[] = [
   { id: 'ferramentas-section', component: lazy(() => import('../components/slides/Slide32_SectionFerramentas').then(m => ({ default: m.Slide32_SectionFerramentas }))), isSection: true },
   { id: 'ferramentas-mentalidade', component: lazy(() => import('../components/slides/Slide33_FerramentasMentalidade').then(m => ({ default: m.Slide33_FerramentasMentalidade }))) },
   { id: 'ferramentas-ppf', component: lazy(() => import('../components/slides/Slide34_FerramentasPPF').then(m => ({ default: m.Slide34_FerramentasPPF }))) },
+  { id: 'soprador-sgt', component: lazy(() => import('../components/slides/Slide34b_SopradorSGT').then(m => ({ default: m.Slide34b_SopradorSGT }))) },
+  { id: 'espatula-feltro', component: lazy(() => import('../components/slides/Slide34c_EspatulaFeltro').then(m => ({ default: m.Slide34c_EspatulaFeltro }))) },
+  { id: 'cortador-liner', component: lazy(() => import('../components/slides/Slide34d_CortadorLiner').then(m => ({ default: m.Slide34d_CortadorLiner }))) },
+  { id: 'estilete-tecnica', component: lazy(() => import('../components/slides/Slide34e_EstileteTecnica').then(m => ({ default: m.Slide34e_EstileteTecnica }))) },
+  { id: 'lamina-curta', component: lazy(() => import('../components/slides/Slide34f_LaminaCurta').then(m => ({ default: m.Slide34f_LaminaCurta }))) },
+  { id: 'solucao-aplicacao', component: lazy(() => import('../components/slides/Slide34g_SolucaoAplicacao').then(m => ({ default: m.Slide34g_SolucaoAplicacao }))) },
+  { id: 'solucao-secagem', component: lazy(() => import('../components/slides/Slide34h_SolucaoSecagem').then(m => ({ default: m.Slide34h_SolucaoSecagem }))) },
   { id: 'ferramentas-conclusao', component: lazy(() => import('../components/slides/Slide35_FerramentasConclusao').then(m => ({ default: m.Slide35_FerramentasConclusao }))) },
   
   // Final Enclosure
