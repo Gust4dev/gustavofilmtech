@@ -1,5 +1,6 @@
 import React, { ReactNode } from 'react';
 import { motion } from 'framer-motion';
+import { usePrint } from './PrintContext';
 
 interface SlideWrapperProps {
   children: ReactNode;
@@ -7,6 +8,7 @@ interface SlideWrapperProps {
   showFlare?: boolean;
   showLogo?: boolean;
   logoSize?: string; // e.g., "8vmin"
+  isPrinting?: boolean;
 }
 
 export const SlideWrapper: React.FC<SlideWrapperProps> = ({ 
@@ -14,22 +16,31 @@ export const SlideWrapper: React.FC<SlideWrapperProps> = ({
   className = "",
   showFlare = false,
   showLogo = false,
-  logoSize = "15vmin" // Increased default size
+  logoSize = "15vmin", // Increased default size
+  isPrinting: propIsPrinting = false
 }) => {
+  const { isPrinting: contextIsPrinting } = usePrint();
+  const isPrinting = propIsPrinting || contextIsPrinting;
+  const wrapperProps = isPrinting ? {
+    initial: false,
+    animate: false,
+    className: `relative w-full h-full flex flex-col items-center justify-center ${className}`
+  } : {
+    initial: { opacity: 0, y: 50 },
+    animate: { opacity: 1, y: 0 },
+    exit: { opacity: 0, y: -50 },
+    transition: { duration: 0.8, ease: [0.22, 1, 0.36, 1] },
+    className: `absolute inset-0 w-full h-full flex flex-col items-center justify-center overflow-hidden ${className}`
+  };
+
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 50 }}
-      animate={{ opacity: 1, y: 0 }}
-      exit={{ opacity: 0, y: -50 }}
-      transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }} // Custom bezier for premium feel
-      className={`absolute inset-0 w-full h-full flex flex-col items-center justify-center overflow-hidden ${className}`}
-    >
+    <motion.div {...wrapperProps}>
       {showLogo && (
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.5, duration: 0.8 }}
-          className="absolute bottom-[4vmin] right-[4vmin] z-0 pointer-events-none select-none"
+          className="absolute bottom-[4vmin] right-[4vmin] z-0 pointer-events-none select-none pdf-corner-logo"
         >
           <img 
             src="/images/logobranca.webp" 
@@ -40,7 +51,7 @@ export const SlideWrapper: React.FC<SlideWrapperProps> = ({
         </motion.div>
       )}
 
-      {showFlare && (
+      {showFlare && !isPrinting && (
         <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none select-none">
           {/* Top Right Flare */}
           <div 

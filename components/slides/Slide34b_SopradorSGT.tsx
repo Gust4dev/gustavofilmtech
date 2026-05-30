@@ -2,7 +2,7 @@ import React from 'react';
 import { Wind, CheckCircle2 } from 'lucide-react';
 import { SlideWrapper, TextReveal } from '../SlideWrapper';
 
-const IMG = '/novas/WhatsApp%20Image%202026-05-28%20at%2019.59.33.jpeg';
+const IMG = '/images/soprador-sgt.webp';
 
 const beneficios = [
   'Seca rapidamente as bordas do PPF',

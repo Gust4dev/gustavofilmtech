@@ -2,7 +2,7 @@ import React from 'react';
 import { Scissors, CheckCircle2 } from 'lucide-react';
 import { SlideWrapper, TextReveal } from '../SlideWrapper';
 
-const IMG = '/novas/WhatsApp%20Image%202026-05-28%20at%2019.59.34.jpeg';
+const IMG = '/images/cortador-liner.webp';
 
 const beneficios = [
   'Ajustes precisos sem risco de danificar a pintura',

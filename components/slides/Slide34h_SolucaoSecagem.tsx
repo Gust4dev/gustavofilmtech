@@ -2,7 +2,7 @@ import React from 'react';
 import { Droplets, Info } from 'lucide-react';
 import { SlideWrapper, TextReveal } from '../SlideWrapper';
 
-const IMG_BORRIFADORES = '/novas/WhatsApp%20Image%202026-05-28%20at%2019.59.36%20(1).jpeg';
+const IMG_BORRIFADORES = '/images/borrifadores.webp';
 
 export const Slide34h_SolucaoSecagem: React.FC = () => {
   return (

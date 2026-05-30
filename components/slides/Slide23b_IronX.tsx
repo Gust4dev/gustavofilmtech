@@ -2,7 +2,7 @@ import React from 'react';
 import { AlertTriangle, ShieldCheck } from 'lucide-react';
 import { SlideWrapper, TextReveal } from '../SlideWrapper';
 
-const IMG_IRON_X = '/novas/WhatsApp%20Image%202026-05-28%20at%2019.59.35%20(2).jpeg';
+const IMG_IRON_X = '/images/iron-x.webp';
 
 const beneficiosPPF = [
   'Remove contaminações invisíveis presas no filme',

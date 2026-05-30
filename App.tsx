@@ -12,7 +12,10 @@ import { Navigation } from "./components/Navigation";
 import { IntroScreen } from "./components/IntroScreen";
 import { LoadingSlide } from "./components/LoadingSlide";
 import { DigitalLock } from "./components/DigitalLock";
+import { AdminPrint } from "./components/AdminPrint";
 import { CONFIG } from "./constants/config";
+import { Printer } from "lucide-react";
+import { PrintProvider } from "./components/PrintContext";
 
 import { SLIDES_LIST, SLIDES_COUNT } from "./constants/slides";
 
@@ -20,7 +23,17 @@ const App: React.FC = () => {
   const [showIntro, setShowIntro] = useState(true);
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isScrolling, setIsScrolling] = useState(false);
+  const [isAdmin, setIsAdmin] = useState(false);
+  const [isPrintView, setIsPrintView] = useState(false);
   const touchStartY = useRef(0);
+
+  // Check for admin mode on mount
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    if (params.get('admin') === 'true' || params.get('mode') === 'print') {
+      setIsAdmin(true);
+    }
+  }, []);
 
   const handleStart = useCallback(() => {
     if (showIntro) {
@@ -185,51 +198,77 @@ const App: React.FC = () => {
   };
 
   return (
-    <div className="relative w-screen h-screen overflow-hidden bg-white font-sans selection:bg-brand-red selection:text-white">
-      <AnimatePresence>
-        {showIntro && <IntroScreen onStart={handleStart} />}
-      </AnimatePresence>
+    <PrintProvider isPrinting={isPrintView}>
+      <div className={isPrintView ? "print-root" : "relative w-screen h-screen overflow-hidden bg-white font-sans selection:bg-brand-red selection:text-white"}>
+        <AnimatePresence>
+          {showIntro && <IntroScreen onStart={handleStart} />}
+        </AnimatePresence>
 
-      <AnimatePresence>{CONFIG.IS_LOCKED && <DigitalLock />}</AnimatePresence>
+        <AnimatePresence>{CONFIG.IS_LOCKED && <DigitalLock />}</AnimatePresence>
 
-      {!showIntro && (
-        <>
-          <Navigation
-            totalSlides={SLIDES_COUNT}
-            currentSlide={currentSlide}
-            onNavigate={(index) => {
-              if (!isScrolling && !showIntro) {
-                setCurrentSlide(index);
-              }
-            }}
-          />
+        {!showIntro && (
+          <>
+            {isPrintView ? (
+              <AdminPrint />
+            ) : (
+              <>
+                <Navigation
+                  totalSlides={SLIDES_COUNT}
+                  currentSlide={currentSlide}
+                  onNavigate={(index) => {
+                    if (!isScrolling && !showIntro) {
+                      setCurrentSlide(index);
+                    }
+                  }}
+                />
 
-          {/* Progress Bar moved inside the conditional block */}
-          <div className="fixed bottom-0 left-0 w-full h-1 bg-white/10 z-50">
-            <div
-              className="h-full bg-brand-red transition-all duration-700 ease-out"
-              style={{ width: `${((currentSlide + 1) / SLIDES_COUNT) * 100}%` }}
-            />
-          </div>
+                <div className="fixed bottom-0 left-0 w-full h-1 bg-white/10 z-50">
+                  <div
+                    className="h-full bg-brand-red transition-all duration-700 ease-out"
+                    style={{ width: `${((currentSlide + 1) / SLIDES_COUNT) * 100}%` }}
+                  />
+                </div>
 
-          {/* Main Slide Container with unique key at Suspense level for AnimatePresence */}
-          <AnimatePresence mode="wait">
-            <motion.div
-              key={SLIDES_LIST[currentSlide]?.id || 'loading'}
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              transition={{ duration: 0.5 }}
-              className="absolute inset-0 w-full h-full"
-            >
-              <Suspense fallback={<LoadingSlide />}>
-                {renderSlideContent()}
-              </Suspense>
-            </motion.div>
-          </AnimatePresence>
-        </>
-      )}
-    </div>
+                <AnimatePresence mode="wait">
+                  <motion.div
+                    key={SLIDES_LIST[currentSlide]?.id || 'loading'}
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    exit={{ opacity: 0 }}
+                    transition={{ duration: 0.5 }}
+                    className="absolute inset-0 w-full h-full"
+                  >
+                    <Suspense fallback={<LoadingSlide />}>
+                      {renderSlideContent()}
+                    </Suspense>
+                  </motion.div>
+                </AnimatePresence>
+              </>
+            )}
+
+            {isAdmin && (
+              <div className="fixed bottom-8 left-8 z-[100] no-print">
+                <button
+                  onClick={() => {
+                    if (isPrintView) {
+                      setIsPrintView(false);
+                      // Clear params to return to normal view if desired, or just toggle state
+                    } else {
+                      setIsPrintView(true);
+                      window.scrollTo(0, 0);
+                    }
+                  }}
+                  className="flex items-center gap-2 px-6 py-3 bg-brand-red text-white rounded-full font-bold shadow-2xl hover:bg-red-700 transition-all hover:scale-105 active:scale-95"
+                >
+                  <Printer size={20} />
+                  {isPrintView ? "Voltar ao Deck" : "PREVIEW PARA PDF"}
+                </button>
+              </div>
+            )}
+          </>
+        )}
+      </div>
+    </PrintProvider>
   );
 };
 

@@ -1,9 +1,11 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { SlideWrapper, TextReveal } from '../SlideWrapper';
+import { usePrint } from '../PrintContext';
 import { SlideProps } from '../../types';
 
 export const Slide_PW_Target: React.FC<SlideProps> = () => {
+  const { isPrinting } = usePrint();
   return (
     <SlideWrapper className="bg-white overflow-hidden" showFlare>
       <div className="container mx-auto px-[5vmin] h-full flex flex-col justify-center">
@@ -38,16 +40,16 @@ export const Slide_PW_Target: React.FC<SlideProps> = () => {
            </div>
 
            <div className="relative">
-              <motion.div 
+              <motion.div
                 initial={{ opacity: 0, scale: 0.8 }}
                 whileInView={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 1 }}
-                className="aspect-square rounded-full border border-brand-red/10 flex items-center justify-center p-12"
+                className={`aspect-square rounded-full border border-brand-red/10 flex items-center justify-center ${isPrinting ? 'p-4' : 'p-12'}`}
               >
-                <div className="w-full h-full rounded-full border border-brand-red/20 flex items-center justify-center p-12">
-                   <div className="w-full h-full rounded-full bg-brand-red flex flex-col items-center justify-center text-center p-8 shadow-[0_0_50px_rgba(239,68,68,0.2)]">
-                      <span className="text-white font-black text-6xl md:text-8xl leading-none">0.1%</span>
-                      <span className="text-white/80 font-bold uppercase tracking-widest text-sm mt-2">Do Mercado Automotivo</span>
+                <div className={`w-full h-full rounded-full border border-brand-red/20 flex items-center justify-center ${isPrinting ? 'p-4' : 'p-12'}`}>
+                   <div className={`w-full h-full rounded-full bg-brand-red flex flex-col items-center justify-center text-center ${isPrinting ? 'p-4' : 'p-8'} shadow-[0_0_50px_rgba(239,68,68,0.2)]`}>
+                      <span className={`text-white font-black leading-none ${isPrinting ? 'text-4xl' : 'text-6xl md:text-8xl'}`}>0.1%</span>
+                      <span className={`text-white/80 font-bold uppercase tracking-widest mt-2 ${isPrinting ? 'text-xs' : 'text-sm'}`}>Do Mercado Automotivo</span>
                    </div>
                 </div>
               </motion.div>

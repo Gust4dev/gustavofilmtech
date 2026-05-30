@@ -2,7 +2,7 @@ import React from 'react';
 import { ChevronRight, AlertTriangle } from 'lucide-react';
 import { SlideWrapper, TextReveal } from '../SlideWrapper';
 
-const IMG = '/novas/WhatsApp%20Image%202026-05-28%20at%2019.59.35%20(1).jpeg';
+const IMG = '/images/lamina-curta.webp';
 
 const regioes = [
   'Entre coluna e paralama',

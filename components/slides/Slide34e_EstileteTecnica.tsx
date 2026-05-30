@@ -2,8 +2,8 @@ import React from 'react';
 import { CheckCircle2, XCircle } from 'lucide-react';
 import { SlideWrapper, TextReveal } from '../SlideWrapper';
 
-const IMG_CERTO = '/novas/WhatsApp%20Image%202026-05-28%20at%2019.59.34%20(1).jpeg';
-const IMG_ERRADO = '/novas/WhatsApp%20Image%202026-05-28%20at%2019.59.34%20(2).jpeg';
+const IMG_CERTO = '/images/estilete-certo.webp';
+const IMG_ERRADO = '/images/estilete-errado.webp';
 
 const certoItems = [
   '5 dedos para máxima firmeza e controle',

@@ -2,7 +2,7 @@ import React from 'react';
 import { CheckCircle2 } from 'lucide-react';
 import { SlideWrapper, TextReveal } from '../SlideWrapper';
 
-const IMG_CLAY = '/novas/WhatsApp%20Image%202026-05-28%20at%2019.59.37.jpeg';
+const IMG_CLAY = '/images/clay-bar.webp';
 
 const etapas = [
   'Lavagem técnica inicial',

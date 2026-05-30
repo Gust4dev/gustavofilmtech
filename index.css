@@ -1,0 +1,97 @@
+/* --- GLOBAL --- */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Inter', sans-serif;
+  background-color: white;
+  color: black;
+}
+
+/* --- PRINT RULES (CRITICAL) --- */
+@media print {
+  @page {
+    size: A4 portrait;
+    margin: 0 !important;
+  }
+
+  /* Ensure all parent containers are visible and allow content to flow */
+  html, body, #root, #root > div, .print-root, .admin-print-container {
+    height: auto !important;
+    min-height: 0 !important;
+    overflow: visible !important;
+    display: block !important;
+    position: static !important;
+    width: 210mm !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    background: white !important;
+  }
+
+  .print-slide {
+    display: block !important;
+    width: 210mm !important;
+    height: 296.5mm !important; /* Slightly less than 297mm for safety */
+    page-break-after: always !important;
+    page-break-inside: avoid !important;
+    page-break-before: auto !important;
+    position: relative !important;
+    overflow: hidden !important;
+    background: white !important;
+    border: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    /* Zoom out slightly if content is too close to edges */
+    transform: scale(0.99);
+    transform-origin: top center;
+  }
+
+  .no-print {
+    display: none !important;
+  }
+}
+
+/* --- SCREEN VIEW FOR ADMIN/PRINT PREVIEW --- */
+@media screen {
+  .admin-print-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: #111;
+    width: 100%;
+    min-height: 100vh;
+    padding: 60px 0;
+    gap: 40px;
+  }
+
+  .print-slide {
+    width: 210mm;
+    height: 297mm;
+    background: white;
+    box-shadow: 0 30px 60px rgba(0,0,0,0.5);
+    position: relative;
+    overflow: hidden;
+    flex-shrink: 0;
+  }
+
+  .print-root {
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
+}
+
+/* --- PDF GENERATION UTILITIES --- */
+.pdf-hide-logos .pdf-corner-logo,
+.pdf-hide-logos img[src*="logobranca"],
+.pdf-hide-logos img[src*="logoname"],
+.pdf-hide-logos img[src*="logoF"] {
+  visibility: hidden !important;
+}
+
+.pdf-hide-debug .no-print {
+  display: none !important;
+}

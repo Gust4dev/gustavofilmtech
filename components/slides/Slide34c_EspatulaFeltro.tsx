@@ -2,7 +2,7 @@ import React from 'react';
 import { Layers, CheckCircle2 } from 'lucide-react';
 import { SlideWrapper, TextReveal } from '../SlideWrapper';
 
-const IMG = '/novas/WhatsApp%20Image%202026-05-28%20at%2019.59.36.jpeg';
+const IMG = '/images/espatula-feltro.webp';
 
 const usoIdeal = ['Acabamentos finais', 'Áreas sensíveis', 'Ajustes de alta precisão'];
 

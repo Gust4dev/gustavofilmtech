@@ -1,9 +1,12 @@
 import React from 'react';
 import { SlideWrapper } from '../SlideWrapper';
+import { usePrint } from '../PrintContext';
 import { motion } from 'framer-motion';
 import { Instagram } from 'lucide-react';
 
 export const Slide12_Final: React.FC = () => {
+  const { isPrinting } = usePrint();
+
   // Variantes de animação para entrada suave
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -55,17 +58,17 @@ export const Slide12_Final: React.FC = () => {
         />
 
         {/* Bloco dos Instagrams (Lado a Lado) */}
-        <motion.div 
+        <motion.div
             variants={itemVariants}
-            className="flex flex-col md:flex-row items-center justify-center gap-12 md:gap-24 w-full"
+            className={`flex flex-col md:flex-row items-center justify-center w-full ${isPrinting ? 'gap-8' : 'gap-12 md:gap-24'}`}
         >
             {/* Perfil Pessoal */}
             <div className="flex flex-col items-center group">
-                <div className="p-4 bg-gray-50 rounded-full mb-4 border-2 border-gray-100 group-hover:border-brand-red/50 transition-colors">
-                    <Instagram size={48} className="text-gray-900 group-hover:text-brand-red transition-colors" />
+                <div className={`bg-gray-50 rounded-full mb-4 border-2 border-gray-100 group-hover:border-brand-red/50 transition-colors ${isPrinting ? 'p-3' : 'p-4'}`}>
+                    <Instagram size={isPrinting ? 36 : 48} className="text-gray-900 group-hover:text-brand-red transition-colors" />
                 </div>
                 <span className="text-gray-400 text-sm font-bold uppercase tracking-widest mb-1">Founder</span>
-                <span className="text-3xl md:text-4xl font-black text-gray-900 tracking-tight">
+                <span className={`font-black text-gray-900 tracking-tight ${isPrinting ? 'text-xl' : 'text-3xl md:text-4xl'}`}>
                     @gustavo_filmtech
                 </span>
             </div>
@@ -75,11 +78,11 @@ export const Slide12_Final: React.FC = () => {
 
             {/* Perfil da Empresa */}
             <div className="flex flex-col items-center group">
-                 <div className="p-4 bg-gray-50 rounded-full mb-4 border-2 border-gray-100 group-hover:border-brand-red/50 transition-colors">
-                    <Instagram size={48} className="text-gray-900 group-hover:text-brand-red transition-colors" />
+                 <div className={`bg-gray-50 rounded-full mb-4 border-2 border-gray-100 group-hover:border-brand-red/50 transition-colors ${isPrinting ? 'p-3' : 'p-4'}`}>
+                    <Instagram size={isPrinting ? 36 : 48} className="text-gray-900 group-hover:text-brand-red transition-colors" />
                 </div>
                 <span className="text-gray-400 text-sm font-bold uppercase tracking-widest mb-1">Company</span>
-                <span className="text-3xl md:text-4xl font-black text-gray-900 tracking-tight">
+                <span className={`font-black text-gray-900 tracking-tight ${isPrinting ? 'text-xl' : 'text-3xl md:text-4xl'}`}>
                     @filmtech_luxury
                 </span>
             </div>
