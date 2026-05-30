@@ -44,7 +44,7 @@ export const Slide34e_EstileteTecnica: React.FC = () => {
             <div className="h-full flex flex-col rounded-2xl overflow-hidden border border-gray-100 shadow-sm">
               {/* Foto */}
               <div className="overflow-hidden flex-shrink-0" style={{ height: 'clamp(100px, 18vmin, 210px)' }}>
-                <img src={IMG_CERTO} alt="Pegada correta do estilete — 5 dedos" className="w-full h-full object-cover object-top" />
+                <img src={IMG_CERTO} alt="Pegada correta do estilete — 5 dedos" className="w-full h-full object-cover object-center" />
               </div>
               {/* Header verde */}
               <div className="px-[2vmin] py-[1.2vmin] flex items-center gap-[1.2vmin]" style={{ background: 'rgba(22, 163, 74, 0.08)', borderBottom: '1px solid rgba(22,163,74,0.2)' }}>
